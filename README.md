@@ -128,8 +128,8 @@ This function can approximate the following function:
 
 $$
 \begin{cases}
-0,&x<a\\
-k,&x\ge a\\
+0, & x<a\\
+k, & x\ge a
 \end{cases}
 $$
 
@@ -175,9 +175,9 @@ The function eqvalents to the following function:
 
 $$
 \begin{cases}
--\frac{k}{2}|a-b|,&x<a\\
-k(x-a)-\frac{k}{2}|a-b|,&x\in[a,b]\\
-\frac{k}{2}|a-b|,&x>b\\
+-\frac{k}{2}|a-b|, & x<a\\
+k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\\
+\frac{k}{2}|a-b|, & x>b
 \end{cases}
 $$
 
@@ -209,8 +209,8 @@ This function can approximate the following function:
 
 $$
 \begin{cases}
-0,&x<a\\
-f(x),&x\ge a
+0, & x<a\\
+f(x), & x\ge a
 \end{cases}
 $$
 
@@ -241,25 +241,25 @@ to approximate the indicator function:
 $$
 \mathbb1_{[a,b]}(x)=
 \begin{cases}
-1,&x\in[a,b]\\
-0,&\text{Otherwise}
+1, & x\in[a,b]\\
+0, & \text{Otherwise}
 \end{cases}
 $$
 
 You may notice that the function is just the multiplication of a step function and a step-like function.
 
-(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power function like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\mathbb{R}ight)^{2m}\mathbb{R}ight)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
+(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power function like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\right)^{2m}\right)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
 
 Let's consider the piecewise function:
 
 $$
 f(x)=
 \begin{cases}
-f_1(x),&x\in[a_1,b_1]\\
-f_2(x),&x\in[a_2,b_2]\\
+f_1(x), & x\in[a_1,b_1]\\
+f_2(x), & x\in[a_2,b_2]\\
 \vdots\\
-f_n(x),&x\in[a_n,b_n]\\
-0,&\text{Otherwise}
+f_n(x), & x\in[a_n,b_n]\\
+0, & \text{Otherwise}
 \end{cases}
 $$
 
@@ -300,7 +300,7 @@ This function can also sweep a wide area by creating many spikes.
 ### Periodic general setp function:
 
 $$
-\frac{f(x)}{1+e^{-m\left(\sin\left(\frac{\pi(x-p)}{T}\mathbb{R}ight)\sin\left(-\frac{\pi x}{T}\mathbb{R}ight)\mathbb{R}ight)}}
+\frac{f(x)}{1+e^{-m\left(\sin\left(\frac{\pi(x-p)}{T}\right)\sin\left(-\frac{\pi x}{T}\right)\right)}}
 $$
 
 That is: `((f)/(1+exp(-m*(sin(pi*(x-p)/(T))sin(-(pi*x)/(T))))))`
