@@ -129,7 +129,7 @@ This function can approximate the following function:
 $$
 \begin{cases}
 0,&x<a\\
-k,&x\ge a
+k,&x\ge a\\
 \end{cases}
 $$
 
