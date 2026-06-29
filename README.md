@@ -122,7 +122,7 @@ $$
 
 That is: `((k)/((1+exp(-m*(x-(a))))))`
 
-where $m\in\R_+$ is a big positive number.
+where $m\in\mathbb{R}_+$ is a big positive number.
 
 This function can approximate the following function:
 
@@ -151,7 +151,7 @@ $$
 
 That is: `((h)/(1+m*(x-a)^2))`
 
-where $m\in\R_+$ is a big positive number.
+where $m\in\mathbb{R}_+$ is a big positive number.
 
 The function creates a spike at $x=a$ with height $h$.
 
@@ -203,7 +203,7 @@ $$
 
 That is: `((f)/((1+exp(-m*(x-(a))))))`
 
-where $m\in\R_+$ is a big positive number.
+where $m\in\mathbb{R}_+$ is a big positive number.
 
 This function can approximate the following function:
 
@@ -232,7 +232,7 @@ $$
 
 That is `(1/((1+exp(-m*(x-(a))))*(1+exp(m*(x-(b))))))`
 
-where $m\in\R_+$ is a big positive number and $a<b$
+where $m\in\mathbb{R}_+$ is a big positive number and $a<b$
 
 ![1782385252813761707](./README.assets/1782385252813761707.png)
 
@@ -248,7 +248,7 @@ $$
 
 You may notice that the function is just the multiplication of a step function and a step-like function.
 
-(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power function like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\right)^{2m}\right)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
+(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power function like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\mathbb{R}ight)^{2m}\mathbb{R}ight)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
 
 Let's consider the piecewise function:
 
@@ -287,7 +287,7 @@ $$
 
 That is: `((h)/(1+m*(sin((pi*x)/(T)))^2))`
 
-where $m\in\R_+$ is a big positive number.
+where $m\in\mathbb{R}_+$ is a big positive number.
 
 The function creates a spike every $T$ units.
 
@@ -300,12 +300,12 @@ This function can also sweep a wide area by creating many spikes.
 ### Periodic general setp function:
 
 $$
-\frac{f(x)}{1+e^{-m\left(\sin\left(\frac{\pi(x-p)}{T}\right)\sin\left(-\frac{\pi x}{T}\right)\right)}}
+\frac{f(x)}{1+e^{-m\left(\sin\left(\frac{\pi(x-p)}{T}\mathbb{R}ight)\sin\left(-\frac{\pi x}{T}\mathbb{R}ight)\mathbb{R}ight)}}
 $$
 
 That is: `((f)/(1+exp(-m*(sin(pi*(x-p)/(T))sin(-(pi*x)/(T))))))`
 
-where $m\in\R_+$ is a big positive number, $T$ is the period, and $p\in(0,T)$.
+where $m\in\mathbb{R}_+$ is a big positive number, $T$ is the period, and $p\in(0,T)$.
 
 In a period $[kT,kT+T)$, the function will be $f$ if $x\in[kT,kT+p)$, otherwise it will be $0$.
 
