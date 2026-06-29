@@ -127,10 +127,7 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 This function can approximate the following function:
 
 $$
-\begin{cases}
-0, & x<a\\
-k, & x\ge a
-\end{cases}
+\begin{cases} 0, & x<a\\ k, & x\ge a \end{cases}
 $$
 
 That is, the function is 0 when $x<a$, and $k$ when $x\ge a$.
@@ -174,11 +171,7 @@ where $a<b$
 The function eqvalents to the following function:
 
 $$
-\begin{cases}
--\frac{k}{2}|a-b|, & x<a\\
-k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\\
-\frac{k}{2}|a-b|, & x>b
-\end{cases}
+\begin{cases} -\frac{k}{2}|a-b|, & x<a\\ k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\\ \frac{k}{2}|a-b|, & x>b \end{cases}
 $$
 
 which means the function is $-k/2|a-b|$ when $x<a$, a linear function will slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x>b$
@@ -208,10 +201,7 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 This function can approximate the following function:
 
 $$
-\begin{cases}
-0, & x<a\\
-f(x), & x\ge a
-\end{cases}
+\begin{cases} 0, & x<a\\ f(x), & x\ge a \end{cases}
 $$
 
 That is, the function is 0 when $x<a$, and $f(x)$ when $x\ge a$.
@@ -239,11 +229,7 @@ where $m\in\mathbb{R}_+$ is a big positive number and $a<b$
 to approximate the indicator function:
 
 $$
-\mathbb1_{[a,b]}(x)=
-\begin{cases}
-1, & x\in[a,b]\\
-0, & \text{Otherwise}
-\end{cases}
+\mathbb1_{[a,b]}(x)= \begin{cases} 1, & x\in[a,b]\\ 0, & \text{Otherwise} \end{cases}
 $$
 
 You may notice that the function is just the multiplication of a step function and a step-like function.
@@ -253,14 +239,7 @@ You may notice that the function is just the multiplication of a step function a
 Let's consider the piecewise function:
 
 $$
-f(x)=
-\begin{cases}
-f_1(x), & x\in[a_1,b_1]\\
-f_2(x), & x\in[a_2,b_2]\\
-\vdots\\
-f_n(x), & x\in[a_n,b_n]\\
-0, & \text{Otherwise}
-\end{cases}
+f(x)= \begin{cases} f_1(x), & x\in[a_1,b_1]\\ f_2(x), & x\in[a_2,b_2]\\ \vdots\\ f_n(x), & x\in[a_n,b_n]\\ 0, & \text{Otherwise} \end{cases}
 $$
 
 where $a_i<b_i$ for $i=1,2,\cdots,n$
