@@ -127,10 +127,10 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 This function can approximate the following function:
 
 $$
-\begin{cases} 0, & x<a\cr k, & x\ge a \end{cases}
+\begin{cases} 0, & x\lt a\cr k, & x\ge a \end{cases}
 $$
 
-That is, the function is 0 when $x<a$, and $k$ when $x\ge a$.
+That is, the function is 0 when $x\lt a$, and $k$ when $x\ge a$.
 
 Particularly, let $k$ be a negative number to let the bullet move down.
 
@@ -171,10 +171,10 @@ where $a<b$
 The function eqvalents to the following function:
 
 $$
-\begin{cases} -\frac{k}{2}|a-b|, & x<a\cr k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\cr \frac{k}{2}|a-b|, & x>b \end{cases}
+\begin{cases} -\frac{k}{2}|a-b|, & x\lt a\cr k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\cr \frac{k}{2}|a-b|, & x\gt b \end{cases}
 $$
 
-which means the function is $-k/2|a-b|$ when $x<a$, a linear function will slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x>b$
+which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function will slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x\gt b$
 
 ![image-20260625210514390](./README.assets/image-20260625210514390.png)
 
@@ -201,10 +201,10 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 This function can approximate the following function:
 
 $$
-\begin{cases} 0, & x<a\cr f(x), & x\ge a \end{cases}
+\begin{cases} 0, & x\lt a\cr f(x), & x\ge a \end{cases}
 $$
 
-That is, the function is 0 when $x<a$, and $f(x)$ when $x\ge a$.
+That is, the function is 0 when $x\lt a$, and $f(x)$ when $x\ge a$.
 
 ![image-20260625212035083](./README.assets/image-20260625212035083.png)
 
