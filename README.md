@@ -395,10 +395,12 @@ $$
 where
 
 $$
-k_1=hf(t_1,w_i)\\
-k_2=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_1)\\
-k_3=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_2)\\
-k_4=hf(t_1+h,w_i+k_3)
+\begin{aligned}
+&k_1=hf(t_1,w_i)\\
+&k_2=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_1)\\
+&k_3=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_2)\\
+&k_4=hf(t_1+h,w_i+k_3)
+\end{aligned}
 $$
 
 ![image-20260629190351594](./README.assets/image-20260629190351594.png)
