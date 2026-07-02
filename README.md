@@ -438,7 +438,7 @@ y(x_0)=y_0
 \end{cases}
 $$
 
-Prove that the solution will converge to $f(x)$ for any $x>x_0$ when $M\to+\infty$. Particularly, $y(x)=f(x)+\Omicron(\frac{1}{M})$.
+Prove that the solution will converge to $f(x)$ for any $x>x_0$ when $M\to+\infty$. Particularly, $y(x)=f(x)+\operatorname{O}(\frac{1}{M})$.
 
 **Proof:**
 
@@ -459,7 +459,7 @@ y(x)&=e^{-M(x-x_0)}y_0+e^{-Mx}\int_{x_0}^xMf(t)e^{Mt}dt\\
 &=e^{-M(x-x_0)}y_0+e^{-Mx}\left.f(t)e^{Mt}\right|_{x_0}^x-e^{-Mx}\int_{x_0}^xe^{Mt}df(t)\\
 &=e^{-M(x-x_0)}y_0+f(x)e^{Mx}e^{-Mx}-f(x_0)e^{Mx_0}e^{-Mx}-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
 &=f(x)+(y_0-f(x_0))e^{-M(x-x_0)}-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
-&=f(x)+\Omicron(\frac{1}{e^M})-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
+&=f(x)+\operatorname{O}(\frac{1}{e^M})-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
 \end{aligned}
 $$
 
@@ -468,7 +468,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt+\Omicron(\frac{1}{e^M})
+y(x)=f(x)-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt+\operatorname{O}(\frac{1}{e^M})
 $$
 
 ​	Since $f'$ is bounded
@@ -490,10 +490,10 @@ $$
 ​	So
 
 $$
-y(x)=f(x)+\Omicron(\frac{1}{M})+\Omicron(\frac{1}{e^M})=f(x)+\Omicron(\frac{1}{M})
+y(x)=f(x)+\operatorname{O}(\frac{1}{M})+\operatorname{O}(\frac{1}{e^M})=f(x)+\operatorname{O}(\frac{1}{M})
 $$
 
-​	So $y(x)=f(x)+\Omicron(\frac{1}{M})$
+​	So $y(x)=f(x)+\operatorname{O}(\frac{1}{M})$
 
 ​	$\boxed{}$
 
@@ -525,7 +525,7 @@ y(x_0)=y_0\\
 \end{cases}
 $$
 
-Prove that the solution will converge to $f(x)$ for any $x>x_0$ when $M\to+\infty$. Particularly, $y(x)=f(x)+\Omicron(\frac{1}{M})$.
+Prove that the solution will converge to $f(x)$ for any $x>x_0$ when $M\to+\infty$. Particularly, $y(x)=f(x)+\operatorname{O}(\frac{1}{M})$.
 
 **Proof:**
 
@@ -593,7 +593,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)-\int_{x_0}^xU(x,t)f'(t)dt+\Omicron(\frac{M}{e^{M}})
+y(x)=f(x)-\int_{x_0}^xU(x,t)f'(t)dt+\operatorname{O}(\frac{M}{e^{M}})
 $$
 
 ​	Since $f'$ is bounded
@@ -615,10 +615,10 @@ $$
 ​	So
 
 $$
-y(x)=f(x)+\Omicron(\frac{1}{M})+\Omicron(\frac{M}{e^{M}})=f(x)+\Omicron(\frac{1}{M})
+y(x)=f(x)+\operatorname{O}(\frac{1}{M})+\operatorname{O}(\frac{M}{e^{M}})=f(x)+\operatorname{O}(\frac{1}{M})
 $$
 
-​	So $y(x)=f(x)+\Omicron(\frac{1}{M})$
+​	So $y(x)=f(x)+\operatorname{O}(\frac{1}{M})$
 
 ​	$\boxed{}$
 
