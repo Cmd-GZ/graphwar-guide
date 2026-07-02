@@ -465,7 +465,11 @@ y(x)&=e^{-M(x-x_0)}y_0+e^{-Mx}\int_{x_0}^xMf(t)e^{Mt}dt\\
 \end{aligned}
 $$
 
-​	Since $\lim\limits_{M\to+\infty}(y_0-f(x_0))e^{-M(x-x_0)}=0$ for $x>x_0$
+​	For $x>x_0$, since:
+
+$$
+\lim\limits_{M\to+\infty}(y_0-f(x_0))e^{-M(x-x_0)}=0
+$$
 
 ​	So
 
@@ -594,7 +598,11 @@ y(x)&=(y_0+(y_0'+My_0)(x-x_0))e^{-M(x-x_0)}+\int_{x_0}^xM^2(x-t)e^{-M(x-t)}f(t)d
 \end{aligned}
 $$
 
-​	Since $\lim\limits_{M\to+\infty}(y_0-f(x_0)+(y_0'+M(y_0-f(x_0)))(x-x_0))e^{-M(x-x_0)}=0$ for $x>x_0$
+​	For $x>x_0$, since:
+
+$$
+\lim\limits_{M\to+\infty}(y_0-f(x_0)+(y_0'+M(y_0-f(x_0)))(x-x_0))e^{-M(x-x_0)}=0
+$$
 
 ​	So
 
