@@ -2,7 +2,7 @@
 
 Chinese version is here: [中文版本在这里](https://www.bilibili.com/read/readlist/rl1068466)
 
-This is a simple guide for Graphwar, which contains some stuff should be note and some useful skill. And I'm aslo a beginer of this game who started to play it only a few days ago (And my English is not very good). So there may be some errors in this guide. If you find any errors or have any suggestions, please let me know.
+This is a simple guide for Graphwar, which contains some stuff that should be noted and some useful skills. And I'm also a beginner of this game who started to play it only a few days ago (and my English is not very good). So there may be some errors in this guide. If you find any errors or have any suggestions, please let me know, I'll appreciate it.
 
 Anyway, Graphwar is an artillery game in which you must hit your enemies using mathematical functions. The trajectory of your shot is determined by the function you wrote, and your goal is to avoid the obstacles and your teammates and hit your enemies. The game takes place in a Cartesian Plane.
 
@@ -22,10 +22,10 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
     - [Spike function:](#spike-function)
     - [Double absolute function:](#double-absolute-function)
     - [Sine and cosine function:](#sine-and-cosine-function)
-    - [General setp function:](#general-setp-function)
+    - [General step function:](#general-step-function)
     - [Piecewise function approximation:](#piecewise-function-approximation)
     - [Periodic spike function:](#periodic-spike-function)
-    - [Periodic general setp function:](#periodic-general-setp-function)
+    - [Periodic general step function:](#periodic-general-step-function)
   - [ODE mode](#ode-mode)
     - [Mechanism](#mechanism)
     - [Skill](#skill)
@@ -35,21 +35,21 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
 
 ## Something you should know
 
-There are 2 temms in a game, and any player should and only could in one team.
+There are 2 teams in a game, and any player should and can only be in one team.
 
 ![image-20260625190748015](./README.assets/image-20260625190748015.png)
 
-After everyone chicking the $\checkmark$ button and getting green, the game will start after 5 seconds. So click the button, don't let other guys wait you.
+After everyone has clicked the $\checkmark$ button and turned green, the game will start after 5 seconds. So click the button, don't make other guys wait for you.
 
 ![image-20260625191533507](./README.assets/image-20260625191533507.png)
 
-A kinda annoying point is that there are many reason, such as someone join or leave the room, will make you turn back to white. Now you have to click the button again.
+A kinda annoying point is that there are many reasons, such as someone joining or leaving the room, that will make you turn back to white. Now you have to click the button again.
 
-Your teamates and you are always on the left side ($x<0$). Your enemies are always on the right side ($x>0$). Or you can check someone's orientation to judge which side they are on: facing right is your teamates, facing left is your enemies. And you can kill your teamates in this game. So PLZ! don't kill your teamates! You know what? I've been killed because of this for many times.
+Your teammates and you are always on the left side ($x<0$). Your enemies are always on the right side ($x>0$). Or you can check someone's orientation to judge which side they are on: facing right is your teammates, facing left is your enemies. And you can kill your teammates in this game. So PLZ! don't kill your teammates! You know what? I've been killed because of this many times.
 
 ![image-20260625191842364](./README.assets/image-20260625191842364.png)
 
-The character you control will become red when it's your turn. Now you can input any function expression in the input box. Chick "Fire" Button or press "Enter" to fire. The bullet will move according to the corresponding curve of your function from left to right. And you can only fire once per turn.
+The character you control will become red when it's your turn. Now you can input any function expression in the input box. Click "Fire" button or press "Enter" to fire. The bullet will move according to the corresponding curve of your function from left to right. And you can only fire once per turn.
 
 ![image-20260625195737269](./README.assets/image-20260625195737269.png)
 
@@ -61,19 +61,19 @@ $$
 
 ![https://www.graphwar.com/ss2Graphwar.png](./README.assets/ss2Graphwar.png)
 
-That is, instead of setting the posision of launcher be the origin of your function curve, the game will ensure that the function curve is always pass through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Trying use $(x-x_0)^2$ or $(x-x_0)^3$ will make it kinda normal.
+That is, instead of treating the position of the launcher as the origin of your function curve, the game will ensure that the function curve always passes through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Try using $(x-x_0)^2$ or $(x-x_0)^3$ to make it kinda normal.
 
 ![image-20260625195704528](./README.assets/image-20260625195704528.png)
 
 Clearly, $f_{\text{real}}$ is defined only for $x\ge x_0$. So the curve doesn't exist for $x<x_0$.
 
-Since you can only input a function expression in the input box, which means for any input $x$ there is at most one corresponding $f(x)$. It's impossible that an input correspond to multiple values. So it's clearly that the bullet can not move to the left, that is, the $-x$ direction.
+Since you can only input a function expression in the input box, which means for any input $x$ there is at most one corresponding $f(x)$. It's impossible for an input to correspond to multiple values. So it's clear that the bullet cannot move to the left, that is, the $-x$ direction.
 
 The black fucking circles are obstacles. If your bullet hits them, it will explode and make a small hole, and the bullet will disappear.
 
 ![image-20260625201339945](./README.assets/image-20260625201339945.png)
 
-If your bullet hit your teamates or your enemies, they will be killed but your bullet will continue to move.
+If your bullet hits your teammates or your enemies, they will be killed but your bullet will continue to move.
 
 ![image-20260625201258139](./README.assets/image-20260625201258139.png)
 
@@ -93,11 +93,11 @@ If the function value is too large, or more fundamentally and more generally, th
 
 ![image-20260629223755887](./README.assets/image-20260629223755887.png)
 
-The distance your bullet can move, that is , the length of your function curve, is finite. If the distance is too long, the bullet will disappear. That's why something like $sin(100x)$ usually doesn't work.
+The distance your bullet can move, that is, the length of your function curve, is finite. If the distance is too long, the bullet will disappear. That's why something like $\sin(100x)$ usually doesn't work.
 
 ![image-20260625200328666](./README.assets/image-20260625200328666.png)
 
-The map of a game is random. If you get a dumbass map, type `-skip` in the chat box and ask other guys to type it. The game will change a new random map if everyone types `-skip`.
+The map of a game is random. If you get a dumbass map, type `-skip` in the chat box and ask other guys to type it. The game will generate a new random map if everyone types `-skip`.
 
 ## Syntax
 
@@ -137,7 +137,7 @@ The map of a game is random. If you get a dumbass map, type `-skip` in the chat 
 
 ## Useful functions
 
-Some of following contents are from [Graphwar Tutorial Sant Albert '12](https://www.youtube.com/watch?v=E_MmkxTO5kg) and [graphwar meta that i use (EN)](https://www.youtube.com/watch?v=EHuQe7SKwkA)
+Some of the following content is from [Graphwar Tutorial Sant Albert '12](https://www.youtube.com/watch?v=E_MmkxTO5kg) and [graphwar meta that i use (EN)](https://www.youtube.com/watch?v=EHuQe7SKwkA)
 
 And you can combine them by summing and multiplying. Abstractly, summing means "OR", and multiplying means "AND".
 
@@ -162,13 +162,13 @@ $$
 
 That is, the function is 0 when $x\lt a$, and $k$ when $x\ge a$.
 
-Particularly, let $k$ be a negative number to let the bullet move down.
+In particular, let $k$ be a negative number to make the bullet move down.
 
 ![image-20260625204651483](./README.assets/image-20260625204651483.png)
 
 ![1782391863123334113](./README.assets/1782391863123334113.png)
 
-It's a very useful and simple function used to move and dodge the objects.
+It's a very useful and simple function used to move and dodge obstacles.
 
 ### Spike function:
 
@@ -186,7 +186,7 @@ The function creates a spike at $x=a$ with height $h$.
 
 ![image-20260629231124761](./README.assets/image-20260629231124761.png)
 
-Compared to use something like $\frac{h}{1+m(x-a)^2}+\frac{-h}{1+m(x-a-0.1)^2}$, the function is simpler and easier to use.
+Compared to using something like $\frac{h}{1+m(x-a)^2}+\frac{-h}{1+m(x-a-0.1)^2}$, this function is simpler and easier to use.
 
 ### Double absolute function:
 
@@ -198,7 +198,7 @@ That is: `(0.5*(k)(abs(x-(a))-abs(x-(b))))`
 
 where $a<b$
 
-The function eqvalents to the following function:
+The function is equivalent to the following function:
 
 $$
 \begin{cases}
@@ -208,13 +208,13 @@ k(x-a)-\frac{k}{2}|a-b|, & x\in[a,b]\\
 \end{cases}
 $$
 
-which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function will slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x\gt b$
+which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function with slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x\gt b$
 
 ![image-20260625210514390](./README.assets/image-20260625210514390.png)
 
 ![image-20260625210611315](./README.assets/image-20260625210611315.png)
 
-**There are so many cheaters like to use the combination of the function. If you see someone send a whole string of this stuff with verey precise coefficients, it's very likely to be a cheater.**
+**There are so many cheaters who like to use the combination of this function. If you see someone send a whole string of this stuff with very precise coefficients, it's very likely to be a cheater.**
 
 ### Sine and cosine function:
 
@@ -222,7 +222,7 @@ Although $\sin$ and $\cos$ are very basic, they are very useful to sweep a wide 
 
 ![image-20260625211651927](./README.assets/image-20260625211651927.png)
 
-### General setp function:
+### General step function:
 
 $$
 \frac{f(x)}{1+e^{-m(x-a)}}
@@ -247,7 +247,7 @@ That is, the function is 0 when $x\lt a$, and $f(x)$ when $x\ge a$.
 
 ![image-20260625211834599](./README.assets/image-20260625211834599.png)
 
-This function can be used to make any function $f(x)$ works only after pass through a certain point. But if you want to let it works only for a interval, General setp function can't help you. Now you need the flowing stuff.
+This function can be used to make any function $f(x)$ work only after passing through a certain point. But if you want to let it work only for an interval, the General step function can't help you. Now you need the following stuff.
 
 ### Piecewise function approximation:
 
@@ -275,7 +275,7 @@ $$
 
 You may notice that the function is just the multiplication of a step function and a step-like function.
 
-(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power function like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\right)^{2m}\right)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
+(And btw I constructed another version of $\mathbf 1_{(a,b)}(x)$ by combining power functions like: $\mathbf1_{(a,b)}(x)=\left(1+\left(\frac{x-\frac{a+b}{2}}{\frac{a-b}{2}}\right)^{2m}\right)^{-1}$. But it's not useful because you have to replace $a$ and $b$ twice and $m$ must be a natural number.)
 
 Let's consider the piecewise function:
 
@@ -304,7 +304,7 @@ That is, the sum of something like `((f)*(1/((1+exp(-m*(x-(a))))*(1+exp(m*(x-(b)
 
 ![image-20260625213603005](./README.assets/image-20260625213603005.png)
 
-If you played with me in the game, you will see that I usually use this function to construct any function I want. It's very useful for me, which is one of the best function in my mind.
+If you played with me in the game, you will see that I usually use this function to construct any function I want. It's very useful for me, which is one of the best functions in my mind.
 
 ### Periodic spike function:
 
@@ -324,7 +324,7 @@ The function creates a spike every $T$ units.
 
 This function can also sweep a wide area by creating many spikes.
 
-### Periodic general setp function:
+### Periodic general step function:
 
 $$
 \frac{f(x)}{1+e^{-m\left(\sin\left(\frac{\pi(x-p)}{T}\right)\sin\left(-\frac{\pi x}{T}\right)\right)}}
@@ -348,7 +348,7 @@ Based on this function, you can do many interesting things.
 
 As you can see, there are 2 modes of ODE mode: `y'` mode and `y''` mode, corresponding to the first and second derivatives of $y$ with respect to $x$.
 
-Like the normal mode, you can input any function expression in the input box to set the trajectory of your bullet. But it allows you to use variables other than $x$, like $y$ in `y'` mode and $y,y'$ in `y''` mode. (For the variable `y'`. There was a bug in the previous version which made it would be matched with `y` instead of `y'`. But I has been fixed in the latest version. So remember to update your game.)
+Like the normal mode, you can input any function expression in the input box to set the trajectory of your bullet. But it allows you to use variables other than $x$, like $y$ in `y'` mode and $y,y'$ in `y''` mode. (For the variable `y'`. There was a bug in the previous version which made it would be matched with `y` instead of `y'`. But it has been fixed in the latest version. So remember to update your game.)
 
 ![image-20260629184937660](./README.assets/image-20260629184937660.png)
 
@@ -369,7 +369,7 @@ y(x_0)=y_0
 \end{cases}
 $$
 
-For the second order ODE i.e. `y''` mode, the moving curve is also the solution of a certain IVP, but it's clear that you need $2$ initial conditions instead of $1$ in this case. The first initial condition is the same, the game takes the firing angle be the second initial condition, which can be modify by pressing the up/down arrow keys in your turn.
+For the second order ODE i.e. `y''` mode, the moving curve is also the solution of a certain IVP, but it's clear that you need $2$ initial conditions instead of $1$ in this case. The first initial condition is the same, the game takes the firing angle as the second initial condition, which can be modified by pressing the up/down arrow keys in your turn.
 
 ![image-20260629185741113](./README.assets/image-20260629185741113.png)
 
@@ -383,7 +383,7 @@ y(x_0)=y_0\\
 \end{cases}
 $$
 
-Graphar compute the curve by using 4th order Runge-Kutta method whatever `y'` mode or `y''` mode because any $n$th ODE is eqvalent to a first order ODE system. As the following stuff:
+Graphwar computes the curve by using the 4th order Runge-Kutta method whether in `y'` mode or `y''` mode because any $n$th order ODE is equivalent to a first order ODE system, as follows:
 
 $$
 \begin{cases}
@@ -407,11 +407,11 @@ $$
 
 ### Skill
 
-Perhaps you'll say that it's too difficult to construct a curve you want in ODE mode, it seems that the useful functions and skills in the normal mode are useless stuff here. Because looks like you have to compute the first order or even the second order derivative of the above functions, which is too complex and even almost impossible in some cases such as `abs()`. But don't worry, if I'll tell you there is a kind of way to approxmate the function in normal mode by a simple ODE to avoid any derivative?
+Perhaps you'll say that it's too difficult to construct a curve you want in ODE mode, it seems that the useful functions and skills in the normal mode are useless stuff here. Because it looks like you have to compute the first order or even the second order derivative of the above functions, which is too complex and even almost impossible in some cases such as `abs()`. But don't worry, what if I tell you there is a way to approximate the function in normal mode using a simple ODE to avoid any derivative?
 
 Next let's assume the function you want to cook is $f$, the following way can make the moving curve of your bullet **EXACTLY** the approximation to the curve of $f$ i.e. it is not like the normal mode, $f$ won't be shifted up or down. That is, you don't need to guess your $y_0$ coordinate any more if you use the skill I'll tell in ODE mode. So from the point, it seems that the ODE mode is easier than the normal mode.
 
-Assume $M$ be a big positive number, normally $M=233$ is enough. (If $M$ is too big, the final curve will oscillates very frequently somehow, the length of the curve will easily exceed the upper bound).
+Let $M$ be a big positive number, normally $M=233$ is enough. (If $M$ is too big, the final curve will oscillate so frequently that the length of the curve will easily exceed the upper bound.)
 
 #### `y'` mode
 
@@ -431,7 +431,7 @@ Here is the strict proof of the validity:
 
 **Proposition:**
 
-Let $f$ be a differential function where $f'$ is bounded. Consider the following IVP:
+Let $f$ be a differentiable function where $f'$ is bounded. Consider the following IVP:
 
 $$
 \begin{cases}
@@ -525,7 +525,7 @@ Also, here is the strict proof of the validity:
 
 **Proposition:**
 
-Let $f$ be a differential function where $f'$ is bounded. Consider the following IVP:
+Let $f$ be a differentiable function where $f'$ is bounded. Consider the following IVP:
 
 $$
 \begin{cases}
@@ -539,7 +539,7 @@ Prove that the solution will converge to $f(x)$ for any $x>x_0$ when $M\to+\inft
 
 **Proof:**
 
-​	Since $\frac{d^2y}{dx^2}=-M^2y-2M\frac{dy}{dx}+M^2f(x)$ is equivalent as
+​	Since $\frac{d^2y}{dx^2}=-M^2y-2M\frac{dy}{dx}+M^2f(x)$ is equivalent to
 
 $$
 \frac{d^2y}{dx^2}+2M\frac{dy}{dx}+M^2y=M^2f(x)\cdots(1)\\
@@ -620,7 +620,7 @@ $$
 &\le (\sup|f'|)\int_{x_0}^x(1+M(x-t))e^{-M(x-t)}dt\\
 &\le (\sup|f'|)\int_{0}^{x-x_0}(1+Mu)e^{-Mu}du\\
 &\le(\sup|f'|)\int_{0}^{\infty}(1+Mu)e^{-Mu}du\\
-=&\le\frac{2\sup|f'|}{M}
+&\le\frac{2\sup|f'|}{M}
 \end{aligned}
 $$
 
@@ -642,7 +642,7 @@ $$
 
 #### If the developer unprecedentedly pushes a $y^{(n)}$ mode
 
-We can construct like that:
+We can construct it like this:
 
 $$
 \sum_{k=0}^{n} \binom{n}{k} M^{n-k}\frac{d^ky}{dx^k} = M^n f
