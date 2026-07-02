@@ -29,9 +29,9 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
   - [ODE mode](#ode-mode)
     - [Mechanism](#mechanism)
     - [Skill](#skill)
-    - [`y'` mode](#y-mode)
-    - [`y''` mode](#y-mode-1)
-    - [If the developer unprecedentedly pushes a $y^{(n)}$ mode](#if-the-developer-unprecedentedly-pushes-a-yn-mode)
+      - [`y'` mode](#y-mode)
+      - [`y''` mode](#y-mode-1)
+      - [If the developer unprecedentedly pushes a $y^{(n)}$ mode](#if-the-developer-unprecedentedly-pushes-a-yn-mode)
 
 ## Something you should know
 
@@ -413,7 +413,7 @@ Next let's assume the function you want to cook is $f$, the following way can ma
 
 Assume $M$ be a big positive number, normally $M=233$ is enough. (If $M$ is too big, the final curve will oscillates very frequently somehow, the length of the curve will easily exceed the upper bound).
 
-### `y'` mode
+#### `y'` mode
 
 $$
 M(-y+f)
@@ -507,7 +507,7 @@ $$
 
 ​	$\boxed{}$
 
-### `y''` mode
+#### `y''` mode
 
 $$
 -M^2y-2M\frac{dy}{dx}+M^2f
@@ -640,7 +640,7 @@ $$
 
 ​	$\boxed{}$
 
-### If the developer unprecedentedly pushes a $y^{(n)}$ mode
+#### If the developer unprecedentedly pushes a $y^{(n)}$ mode
 
 We can construct like that:
 
