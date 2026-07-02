@@ -485,7 +485,11 @@ $$
 \end{aligned}
 $$
 
-​	Since $\lim\limits_{M\to+\infty}\frac{\sup|f'|}{M}=0$
+​	Since
+
+$$
+\lim\limits_{M\to+\infty}\frac{\sup|f'|}{M}=0
+$$
 
 ​	So
 
@@ -610,7 +614,11 @@ $$
 \end{aligned}
 $$
 
-​	Since $\lim\limits_{M\to+\infty}\frac{2\sup|f'|}{M}=0$
+​	Since
+
+$$
+\lim\limits_{M\to+\infty}\frac{2\sup|f'|}{M}=0
+$$
 
 ​	So
 
