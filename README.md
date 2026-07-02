@@ -369,7 +369,7 @@ y(x_0)=y_0
 \end{cases}
 $$
 
-For the second order ODE i.e. `y''` mode, the moving curve is also the solution of a certain IVP, but it's clear that you need $2$ initial conditions instead of $1$ in this case. The first initial condition is the same, the game sets the firing angle be the second initial condition, which can be modify by pressing the up/down arrow keys in your turn.
+For the second order ODE i.e. `y''` mode, the moving curve is also the solution of a certain IVP, but it's clear that you need $2$ initial conditions instead of $1$ in this case. The first initial condition is the same, the game takes the firing angle be the second initial condition, which can be modify by pressing the up/down arrow keys in your turn.
 
 ![image-20260629185741113](./README.assets/image-20260629185741113.png)
 
