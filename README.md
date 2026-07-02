@@ -373,7 +373,7 @@ For the second order ODE i.e. `y''` mode, the moving curve is also the solution 
 
 ![image-20260629185741113](./README.assets/image-20260629185741113.png)
 
-Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy}{dx})$ (i.e. $E(x,y,y')$), then the corresponding moving curve of your bullet is the solution of the following Initial Value Problem (IVP):
+Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy}{dx})$ (i.e. $E(x,y,y')$), then the corresponding moving curve of your bullet is the solution of the following IVP:
 
 $$
 \begin{cases}
