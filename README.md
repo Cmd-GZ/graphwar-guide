@@ -354,7 +354,7 @@ Like the normal mode, you can input any function expression in the input box to 
 
 As [Syntax](#syntax) said, `y` means $y$, and `y'` means $\frac{dy}{dx}$.
 
-Instead of regarding the expression as a function, the game will treat it as an ordinary differential equation (ODE) to describe the moving curve of your bullet.
+Instead of regarding the expression as a function, the game will treat it as an ordinary differential equation (ODE) to describe the moving curve of your bullet. But it is still essentially a function, so like the normal mode, you can't let the bullet to move to left.
 
 Assume you have understood the above stuff, I will show you how the bullet moves in ODE mode.
 
