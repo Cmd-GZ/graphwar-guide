@@ -77,13 +77,17 @@ If your bullet hits your teammates or your enemies, they will be killed but your
 
 ![image-20260625201258139](./README.assets/image-20260625201258139.png)
 
-The battlefield is in a $[-25,25]\times[-15,15]$ rectangular area. If the bullet hits the boundary, it will disappear.
+Roughly and ideally, the battlefield is in a $[-25,25]\times[-15,15]$ rectangular area. If the bullet hits the boundary, it will disappear.
 
 ![image-20260625202013194](./README.assets/image-20260625202013194.png)
 
 ![image-20260625202054414](./README.assets/image-20260625202054414.png)
 
-If the function is undefined at the point that bullet passes through, like $y=\sqrt{x}$ and the bullet passes through some $x<0$, the bullet will disappear.
+Precisely, at least in Graphwar I, because of some features, the battlefield is in $[-25,25)\times[-\frac{1125}{77},\frac{1125}{77})$, where $25=\frac{50\cdot 770}{770\cdot2},\frac{1125}{77}=\frac{50\cdot 450}{770\cdot 2}\approx 14.6103896$
+
+![image-20260705220825755](./README.assets/image-20260705220825755.png)
+
+If the function is undefined at the point that bullet passes through, like $y=\sqrt{x}$ and the bullet passes through some $x<0$, the bullet wimage-20260625200104823ill disappear.
 
 ![image-20260625200104823](./README.assets/image-20260625200104823.png)
 
