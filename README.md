@@ -87,6 +87,8 @@ Precisely, at least in Graphwar I, because of some features, the battlefield is 
 
 ![image-20260705220825755](./README.assets/image-20260705220825755.png)
 
+![image-20260705221447117](./README.assets/image-20260705221447117.png)
+
 If the function is undefined at the point that bullet passes through, like $y=\sqrt{x}$ and the bullet passes through some $x<0$, the bullet wimage-20260625200104823ill disappear.
 
 ![image-20260625200104823](./README.assets/image-20260625200104823.png)
