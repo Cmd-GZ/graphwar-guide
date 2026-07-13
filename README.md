@@ -29,8 +29,6 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
   - [ODE mode](#ode-mode)
     - [Mechanism](#mechanism)
       - [Algorithm](#algorithm)
-- [\\mathbf Y(x)](#mathbf-yx)
-- [\\mathbf F(\\mathbf Y)](#mathbf-fmathbf-y)
     - [Skill](#skill)
       - [`y'` mode](#y-mode)
       - [`y''` mode](#y-mode-1)
@@ -430,9 +428,8 @@ Let
 
 $$
 \begin{aligned}
-&
 \mathbf Y(x)
-=
+&=
 \begin{pmatrix}
 Y_0(x)\\
 Y_1(x)\\
@@ -445,9 +442,8 @@ x\\
 \mathbf y(x)
 \end{pmatrix},
 \\
-&
 \mathbf F(\mathbf Y)
-=
+&=
 \begin{pmatrix}
 F_0(\mathbf Y)\\
 F_1(\mathbf Y)\\
