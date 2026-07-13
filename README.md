@@ -422,7 +422,7 @@ $$
 \tag{1}
 $$
 
-where $\mathbf y\in\R^m,\mathbf f:\R\times\R^{m}\to\R^{m}$.
+where $\mathbf y\in\mathbb R^m,\mathbf f:\mathbb R\times\mathbb R^{m}\to\mathbb R^{m}$.
 
 Let
 
@@ -446,9 +446,9 @@ $$
 \boxed{
 \begin{aligned}
 &\mathbf{K}_1 = \mathbf{F}(\mathbf{Y}_n),\\
-&\mathbf{K}_2 = \mathbf{F}\!\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_1\right),\\
-&\mathbf{K}_3 = \mathbf{F}\!\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_2\right),\\
-&\mathbf{K}_4 = \mathbf{F}\!\left(\mathbf{Y}_n + h\mathbf{K}_3\right),\\
+&\mathbf{K}_2 = \mathbf{F}\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_1\right),\\
+&\mathbf{K}_3 = \mathbf{F}\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_2\right),\\
+&\mathbf{K}_4 = \mathbf{F}\left(\mathbf{Y}_n + h\mathbf{K}_3\right),\\
 \hline
 &\mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{h}{6}\Bigl(\mathbf{K}_1 + 2\mathbf{K}_2 + 2\mathbf{K}_3 + \mathbf{K}_4\Bigr).\\
 \end{aligned}
