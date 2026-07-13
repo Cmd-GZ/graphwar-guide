@@ -29,6 +29,8 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
   - [ODE mode](#ode-mode)
     - [Mechanism](#mechanism)
       - [Algorithm](#algorithm)
+- [\\mathbf{Y}(x)](#mathbfyx)
+- [\\mathbf F(\\mathbf Y)](#mathbf-fmathbf-y)
     - [Skill](#skill)
       - [`y'` mode](#y-mode)
       - [`y''` mode](#y-mode-1)
@@ -427,7 +429,33 @@ where $\mathbf y\in\mathbb R^m,\mathbf f:\mathbb R\times\mathbb R^{m}\to\mathbb 
 Let
 
 $$
-\mathbf{Y}(x) = \begin{pmatrix} Y_0(x) \\ Y_1(x) \\ \vdots \\ Y_m(x) \end{pmatrix} :=\begin{pmatrix} x \\ \mathbf y(x)\end{pmatrix},\mathbf F(\mathbf Y) = \begin{pmatrix} F_0(\mathbf Y) \\ F_1(\mathbf Y) \\ \vdots \\ F_m(\mathbf Y) \end{pmatrix} := \begin{pmatrix} 1 \\ \mathbf f(x, \mathbf y)\end{pmatrix}.\tag{2}
+\mathbf{Y}(x)
+=
+\begin{pmatrix}
+Y_0(x)\\
+Y_1(x)\\
+\vdots\\
+Y_m(x)
+\end{pmatrix}
+:=
+\begin{pmatrix}
+x\\
+\mathbf y(x)
+\end{pmatrix},
+\mathbf F(\mathbf Y)
+=
+\begin{pmatrix}
+F_0(\mathbf Y)\\
+F_1(\mathbf Y)\\
+\vdots\\
+F_m(\mathbf Y)
+\end{pmatrix}
+:=
+\begin{pmatrix}
+1\\
+\mathbf f(x, \mathbf y)
+\end{pmatrix}.
+\tag{2}
 $$
 
 Then $(1)$ is equivalent to the following self-consistent system:
