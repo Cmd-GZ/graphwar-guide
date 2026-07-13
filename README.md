@@ -419,7 +419,7 @@ $$
 \frac{d\mathbf y}{dx} = \mathbf f\bigl(x, \mathbf y(x)\bigr)\\
 \mathbf y(x_0) = \mathbf y_{0}
 \end{cases}
-\tag{1}
+\qquad (1)
 $$
 
 where $\mathbf y\in\mathbb R^m,\mathbf f:\mathbb R\times\mathbb R^{m}\to\mathbb R^{m}$.
@@ -456,7 +456,7 @@ F_m(\mathbf Y)
 \mathbf f(x, \mathbf y)
 \end{pmatrix}.
 \end{aligned}
-\tag{2}
+\qquad (2)
 $$
 
 Then $(1)$ is equivalent to the following self-consistent system:
@@ -466,7 +466,7 @@ $$
 \frac{d\mathbf Y}{dx} = \mathbf F(\mathbf Y)\\
 \mathbf Y_0=\mathbf Y(x_0)
 \end{cases}
-\tag{3}
+\qquad (3)
 $$
 
 Let $h$ be the step size, then the 4th order Runge-Kutta recursive formula is:
@@ -481,7 +481,7 @@ $$
 \hline
 &\mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{h}{6}\Bigl(\mathbf{K}_1 + 2\mathbf{K}_2 + 2\mathbf{K}_3 + \mathbf{K}_4\Bigr).\\
 \end{aligned}
-} \tag{4}
+} \qquad (4)
 $$
 
 Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$ with $o(h^4)$ error.
