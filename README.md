@@ -28,6 +28,7 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
     - [Periodic general step function:](#periodic-general-step-function)
   - [ODE mode](#ode-mode)
     - [Mechanism](#mechanism)
+      - [Algorithm](#algorithm)
     - [Skill](#skill)
       - [`y'` mode](#y-mode)
       - [`y''` mode](#y-mode-1)
@@ -360,7 +361,7 @@ Like the normal mode, you can input any function expression in the input box to 
 
 As [Syntax](#syntax) said, `y` means $y$, and `y'` means $\frac{dy}{dx}$.
 
-Instead of regarding the expression as a function, the game will treat it as an ordinary differential equation (ODE) to describe the moving curve of your bullet. But it is still essentially a function, so like the normal mode, you can't let the bullet to move to left.
+Instead of regarding the expression as a function, the game will treat it as an explicit ordinary differential equation (ODE) to describe the moving curve of your bullet. But it is still essentially a function, so like the normal mode, you can't let the bullet to move to left.
 
 Assume you have understood the above stuff, I will show you how the bullet moves in ODE mode.
 
@@ -370,7 +371,7 @@ For the first order ODE i.e. `y'` mode, assume the expression you input is $E(x,
 
 $$
 \begin{cases}
-\frac{dx}{dy}=E(x,y)\\
+\frac{dy}{dx}=E(x,y)\\
 y(x_0)=y_0
 \end{cases}
 $$
@@ -383,33 +384,85 @@ Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy
 
 $$
 \begin{cases}
-\frac{dx}{dy}=E(x,y)\\
+\frac{dy}{dx}=E(x,y,\frac{dy}{dx})\\
 y(x_0)=y_0\\
 \frac{dy}{dx}(x_0)=\tan\theta
 \end{cases}
 $$
 
-Graphwar computes the curve by using the 4th order Runge-Kutta method whether in `y'` mode or `y''` mode because any $n$th order ODE is equivalent to a first order ODE system, as follows:
+#### Algorithm
+
+Graphwar computes the curve by using the 4th order Runge-Kutta method whether in `y'` mode or `y''` mode because any $m$-order explicit ODE is equivalent to a first-order ODE system, as follows:
+
+$$
+\begin{align*}
+\frac{d^my}{dx^m}=f(x,y,\frac{dy}{dx},\frac{d^2y}{dx^2},\cdots,\frac{d^{m-1}y}{dx^{m-1}})\\
+\end{align*}
+$$
+
+is equivalent to
 
 $$
 \begin{cases}
-w_0=y_0\\
-w_{i+1}=w_i+\frac{1}{6}(k_1+2k_2+2k_3+k_4)
+\frac{dy_1}{dx}=y_2\\
+\frac{dy_2}{dx}=y_3\\
+\vdots\\
+\frac{dy_{m-1}}{dx}=y_m\\
+\frac{dy_m}{dx}=f(x,y_1,y_2,\cdots,y_m)\\
 \end{cases}
 $$
 
-where
+So generally consider the m-variable first-order ODE system IVP:
 
 $$
+\begin{cases}
+\frac{d\mathbf y}{dx} = \mathbf f\bigl(x, \mathbf y(x)\bigr)\\
+\mathbf y(x_0) = \mathbf y_{0}
+\end{cases}
+\tag{1}
+$$
+
+where $\mathbf y\in\R^m,\mathbf f:\R\times\R^{m}\to\R^{m}$.
+
+Let
+
+$$
+\mathbf{Y}(x) = \begin{pmatrix} Y_0(x) \\ Y_1(x) \\ \vdots \\ Y_m(x) \end{pmatrix} :=\begin{pmatrix} x \\ \mathbf y(x)\end{pmatrix},\mathbf F(\mathbf Y) = \begin{pmatrix} F_0(\mathbf Y) \\ F_1(\mathbf Y) \\ \vdots \\ F_m(\mathbf Y) \end{pmatrix} := \begin{pmatrix} 1 \\ \mathbf f(x, \mathbf y)\end{pmatrix}.\tag{2}
+$$
+
+Then $(1)$ is equivalent to the following self-consistent system:
+
+$$
+\begin{cases}
+\frac{d\mathbf Y}{dx} = \mathbf F(\mathbf Y)\\
+\mathbf Y_0=\mathbf Y(x_0)
+\end{cases}
+\tag{3}
+$$
+
+Let $h$ be the step size, then the 4th order Runge-Kutta recursive formula is:
+
+$$
+\boxed{
 \begin{aligned}
-&k_1=hf(t_1,w_i)\\
-&k_2=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_1)\\
-&k_3=hf(t_1+\frac{h}{2},w_i+\frac{1}{2}k_2)\\
-&k_4=hf(t_1+h,w_i+k_3)
+&\mathbf{K}_1 = \mathbf{F}(\mathbf{Y}_n),\\
+&\mathbf{K}_2 = \mathbf{F}\!\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_1\right),\\
+&\mathbf{K}_3 = \mathbf{F}\!\left(\mathbf{Y}_n + \frac{h}{2}\mathbf{K}_2\right),\\
+&\mathbf{K}_4 = \mathbf{F}\!\left(\mathbf{Y}_n + h\mathbf{K}_3\right),\\
+\hline
+&\mathbf{Y}_{n+1} = \mathbf{Y}_n + \frac{h}{6}\Bigl(\mathbf{K}_1 + 2\mathbf{K}_2 + 2\mathbf{K}_3 + \mathbf{K}_4\Bigr).\\
 \end{aligned}
+} \tag{4}
 $$
 
-![image-20260629190351594](./README.assets/image-20260629190351594.png)
+Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$.
+
+Particularly, $\mathbf Y=\begin{pmatrix}x\\y\end{pmatrix},\mathbf F=\begin{pmatrix}1\\E\end{pmatrix}$ in `y'` mode, and $\mathbf Y=\begin{pmatrix}x\\y\\y'\end{pmatrix},\mathbf F=\begin{pmatrix}1\\y'\\E\end{pmatrix}$ in `y''` mode.
+
+The specific implementation of the algorithm of the game as follows:
+
+![image-20260713191738921](./README.assets/image-20260713191738921.png)
+![image-20260713191815689](./README.assets/image-20260713191815689.png)
 
 ### Skill
 
