@@ -457,7 +457,7 @@ $$
 
 Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$.
 
-Particularly, $\mathbf Y=\begin{pmatrix}x\\y\end{pmatrix},\mathbf F=\begin{pmatrix}1\\E\end{pmatrix}$ in `y'` mode, and $\mathbf Y=\begin{pmatrix}x\\y\\y'\end{pmatrix},\mathbf F=\begin{pmatrix}1\\y'\\E\end{pmatrix}$ in `y''` mode.
+Particularly, $\mathbf Y=\begin{pmatrix}x\cr y\end{pmatrix},\mathbf F=\begin{pmatrix}1\cr E\end{pmatrix}$ in `y'` mode, and $\mathbf Y=\begin{pmatrix}x\cr y\cr y'\end{pmatrix},\mathbf F=\begin{pmatrix}1\cr y'\cr E\end{pmatrix}$ in `y''` mode.
 
 The specific implementation of the algorithm of the game as follows:
 
