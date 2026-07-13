@@ -484,7 +484,7 @@ $$
 } \tag{4}
 $$
 
-Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$.
+Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$ with $o(h^4)$ error.
 
 Particularly, in `y'` mode, we have
 
