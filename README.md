@@ -1,6 +1,6 @@
 # Graphwar Guide
 
-Chinese version is here: [中文版本在这里](https://www.bilibili.com/read/readlist/rl1068466)
+Chinese version is here: [中文版本在这里](./README-zh-cn.md)
 
 This is a simple guide for Graphwar, which contains some stuff that should be noted and some useful skills. And I'm also a beginner of this game who started to play it only a few days ago (and my English is not very good). So there may be some errors in this guide. If you find any errors or have any suggestions, please let me know, I'll appreciate it.
 
