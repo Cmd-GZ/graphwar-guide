@@ -1,32 +1,30 @@
-# Graphwar Guide
+# Graphwar指南
 
-Chinese version is here: [中文版本在这里](https://www.bilibili.com/read/readlist/rl1068466)
+这是一份简易的Graphwar指南，说它简易是因为该指南假设读者会自行探索游戏中的内容，所以不会对一试便知的内容进行解释，也就是说，该指南不会把你当作白痴一样照顾。这份指南包含了一些玩这游戏应当了解的内人以及一些有用的技巧。我自己的话其实也没玩多久，也算是一个小资历，所以指南多多少少可能会有一些疏漏或者错误，如果你找到了某些问题或者有改进的建议，希望你能告诉我。
 
-This is a simple guide for Graphwar, which contains some stuff that should be noted and some useful skills. And I'm also a beginner of this game who started to play it only a few days ago (and my English is not very good). So there may be some errors in this guide. If you find any errors or have any suggestions, please let me know, I'll appreciate it.
+总之，Graphwar是一款数学函数射击游戏，你必须使用数学函数来击中你的敌人。你发射的子弹的轨迹由你输入的函数决定，你的目标是避开障碍物和你的队友，击中你的敌人。游戏发生在笛卡尔平面上。——译自官方介绍。
 
-Anyway, Graphwar is an artillery game in which you must hit your enemies using mathematical functions. The trajectory of your shot is determined by the function you wrote, and your goal is to avoid the obstacles and your teammates and hit your enemies. The game takes place in a Cartesian Plane.
+## 目录
 
-## Contents
-
-- [Graphwar Guide](#graphwar-guide)
-  - [Contents](#contents)
-  - [Something you should know](#something-you-should-know)
-  - [Syntax](#syntax)
-    - [Variables](#variables)
-    - [Binary Operators](#binary-operators)
-    - [Functions](#functions)
-    - [Constants](#constants)
-    - [Brackets](#brackets)
-  - [Useful functions](#useful-functions)
-    - [Step (Sigmoid) function:](#step-sigmoid-function)
-    - [Spike function:](#spike-function)
-    - [Double absolute function:](#double-absolute-function)
+- [Graphwar指南](#graphwar指南)
+  - [目录](#目录)
+  - [你必须知道的事实](#你必须知道的事实)
+  - [符号](#符号)
+    - [变量](#变量)
+    - [二元运算](#二元运算)
+    - [函数](#函数)
+    - [常量](#常量)
+    - [括号](#括号)
+  - [有用的公式](#有用的公式)
+    - [台阶(Sigmoid)函数:](#台阶sigmoid函数)
+    - [尖刺函数:](#尖刺函数)
+    - [双绝对值函数:](#双绝对值函数)
     - [Sine and cosine function:](#sine-and-cosine-function)
     - [General step function:](#general-step-function)
     - [Piecewise function approximation:](#piecewise-function-approximation)
     - [Periodic spike function:](#periodic-spike-function)
     - [Periodic general step function:](#periodic-general-step-function)
-  - [ODE mode](#ode-mode)
+  - [微分方程模式](#微分方程模式)
     - [Mechanism](#mechanism)
       - [Algorithm](#algorithm)
     - [Skill](#skill)
@@ -34,27 +32,27 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
       - [`y''` mode](#y-mode-1)
       - [If the developer unprecedentedly pushes a $y^{(n)}$ mode](#if-the-developer-unprecedentedly-pushes-a-yn-mode)
 
-## Something you should know
+## 你必须知道的事实
 
-There are 2 teams in a game, and any player should and can only be in one team.
+游戏有两支队伍，每个玩家必须只能在其中一支队伍中。
 
 ![image-20260625190748015](./README.assets/image-20260625190748015.png)
 
-After everyone has clicked the $\checkmark$ button and turned green, the game will start after 5 seconds. So click the button, don't make other guys wait for you.
+只有当所有人点击了$\checkmark$按钮并且变成绿色的时候，游戏才会开始，所以，别进入游戏后干楞着，别让其他人等你。
 
 ![image-20260625191533507](./README.assets/image-20260625191533507.png)
 
-A kinda annoying point is that there are many reasons, such as someone joining or leaving the room, that will make you turn back to white. Now you have to click the button again.
+有点恶心人的一点是由于某些原因，比如有人加入或者离开房间，会让你变回白色。使你必须重新点击按钮。
 
-Your teammates and you are always on the left side ($x<0$). Your enemies are always on the right side ($x>0$). Or you can check someone's orientation to judge which side they are on: facing right is your teammates, facing left is your enemies. And you can kill your teammates in this game. So PLZ! don't kill your teammates! You know what? I've been killed because of this many times.
+你和你的队友永远都在左侧 ($x<0$)。你的敌人永远在右侧 ($x>0$)。如果分不清左右的话可以通过士兵的朝向来辨别敌我：朝向右边的是你和你的队友，朝向左边的是你的敌人。这个游戏有友伤，所以别把你队友一枪崩了求求了，我已经因为这样似过好多次了。
 
 ![image-20260625191842364](./README.assets/image-20260625191842364.png)
 
-The character you control will become red when it's your turn. Now you can input any function expression in the input box. Click "Fire" button or press "Enter" to fire. The bullet will move according to the corresponding curve of your function from left to right. And you can only fire once per turn.
+当进入你的回合，你所操控的其中一个士兵会变红，现在你可以在函数输入框内输入任何的函数表达式，点击 "Fire" 按钮或者按回车键就可以发射子弹，子弹将会根据你输入的函数表达式对应的曲线从左向右运动，每一回合你只能发射一次。
 
 ![image-20260625195737269](./README.assets/image-20260625195737269.png)
 
-In the normal mode (`y` mode) (I'll talk about [ODE mode](#ode-mode) (`y'` and `y''` mode) later), assume the function you input is $f$, and your coordinates are $(x_0,y_0)$, then the real moving curve of your bullet is:
+在普通模式 (`y`模式) 中 (至于[微分方程模式](#微分方程模式)，也就是`y'`和`y''`模式，我稍后再讲) 假设你输入的函数为$f$，你的坐标为$(x_0,y_0)$，那么你的子弹的实际运动曲线是:
 
 $$
 f_{\text{real}}(x)=f(x)+(y_0-f(x_0))
@@ -62,103 +60,105 @@ $$
 
 ![https://www.graphwar.com/ss2Graphwar.png](./README.assets/ss2Graphwar.png)
 
-That is, instead of treating the position of the launcher as the origin of your function curve, the game will ensure that the function curve always passes through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Try using $(x-x_0)^2$ or $(x-x_0)^3$ to make it kinda normal.
+也就是说，游戏通过上下平移你输入的函数来确保你的子弹的实际运动曲线会经过发射点，而不是将发射点设为函数的原点，这就是当你输入诸如$x^2,x^3$之类的函数可能会得到一条非常陡峭的曲线的原因，尝试输入诸如$(x-x_0)^2$或者给函数乘以一个小系数可能会好些。
 
 ![image-20260625195704528](./README.assets/image-20260625195704528.png)
 
-Clearly, $f_{\text{real}}$ is defined only for $x\ge x_0$. So the curve doesn't exist for $x<x_0$.
+显然，函数 $f_{\text{real}}$ 只定义在 $x\ge x_0$ 的区域，所以曲线不存在于 $x<x_0$ 的区域。
 
-Since you can only input a function expression in the input box, which means for any input $x$ there is at most one corresponding $f(x)$. It's impossible for an input to correspond to multiple values. So it's clear that the bullet cannot move to the left, that is, the $-x$ direction.
+由于你只能输入函数表达式，而一个函数意味着一个输入$x$仅能至多对应一个输出$f(x)$，因此多值函数是不可能的，所以显然子弹没办法向左，也就是向$-x$方向运动。
 
-The black fucking circles are obstacles. If your bullet hits them, it will explode and make a small hole, and the bullet will disappear.
+这些黑不拉几的圆圈是障碍，如果子弹击中了它们，子弹会爆炸并产生一个小洞，然后子弹会消失。
 
 ![image-20260625201339945](./README.assets/image-20260625201339945.png)
 
-If your bullet hits your teammates or your enemies, they will be killed but your bullet will continue to move.
+如果子弹击中了敌人或者友军，他们会被子弹击杀，但子弹不会消失，而是会继续运动。
 
 ![image-20260625201258139](./README.assets/image-20260625201258139.png)
 
-Roughly and ideally, the battlefield is in a $[-25,25]\times[-15,15]$ rectangular area. If the bullet hits the boundary, it will disappear.
+粗略且理想化地说，战场是一个$[-25,25]\times[-15,15]$的矩形区域，若子弹击中边界，子弹会消失。
 
 ![image-20260625202013194](./README.assets/image-20260625202013194.png)
 
 ![image-20260625202054414](./README.assets/image-20260625202054414.png)
 
-Precisely, at least in Graphwar I, because of some features, the battlefield is in $[-25,25)\times[-\frac{1125}{77},\frac{1125}{77})$, where $25=\frac{50\cdot 770}{770\cdot2},\frac{1125}{77}=\frac{50\cdot 450}{770\cdot 2}\approx 14.6103896$
+准确地说，在 Graphwar I，由于某些特性，战场实际上是$[-25,25)\times[-\frac{1125}{77},\frac{1125}{77})$，其中$25=\frac{50\cdot 770}{770\cdot2},\frac{1125}{77}=\frac{50\cdot 450}{770\cdot 2}\approx 14.6103896$
 
 ![image-20260705220825755](./README.assets/image-20260705220825755.png)
 
 ![image-20260705221447117](./README.assets/image-20260705221447117.png)
 
-If the function is undefined at the point that bullet passes through, like $y=\sqrt{x}$ and the bullet passes through some $x<0$, the bullet will disappear.
+如果子弹经过了一个对于函数来说为定义的点，比如$y=\sqrt x$且子弹经过了一个$x<0$的坐标，那么子弹也会消失。
 
 ![image-20260625200104823](./README.assets/image-20260625200104823.png)
 
-If the function value is too large, or more fundamentally and more generally, the function value is `NaN`, the bullet will disappear.
+如果函数值太大，或者更基本地说，当计算函数值时中间值出现了 `NaN` ，则子弹会消失。
 
 ![image-20260625201945265](./README.assets/image-20260625201945265.png)
 
 ![image-20260629223755887](./README.assets/image-20260629223755887.png)
 
-The distance your bullet can move, that is, the length of your function curve, is finite. If the distance is too long, the bullet will disappear. That's why something like $\sin(100x)$ usually doesn't work.
+子弹运动距离，也就是函数曲线的长度，是有限的，如果距离太长，子弹会消失，这就是为什么诸如$\sin(100x)$通常无法跑得太远。
 
 ![image-20260625200328666](./README.assets/image-20260625200328666.png)
 
 The map of a game is random. If you get a dumbass map, type `-skip` in the chat box and ask other guys to type it. The game will generate a new random map if everyone types `-skip`.
 
-## Syntax
+游戏的地图是随机的，如果你得到了一张傻逼地图，可以在聊天框中输入`-skip`并请求其他人也输入它，若所有人都输入了`-skip`，则游戏会重新生成一张随机地图。
 
-### Variables
+## 符号
+
+### 变量
 
 - `x`:  $x$
 - `y`:  $y$
 - `y'`: $y'$
 
-### Binary Operators
+### 二元运算
 
 - `+`: $+$
 - `-`: $-$
 - `*`: $\times$
 - `/`: $\div$
-- `^`: power, such as `x^2` is $x^2$
+- `^`: 幂运算，比如 `x^2` 是 $x^2$
 
-### Functions
+### 函数
 
-- `sqrt()`: square root, such as `sqrt(x)` is $\sqrt{x}$
-- `ln()`: natural logarithm, such as `ln(x)` is $ln(x)$
-- `log()`: common logarithm, such as `log(x)` is $log_{10}(x)$
-- `abs()`: absolute value, such as `abs(x)` is $|x|$
-- `sin()` or `sen()`: sine, such as `sin(x)` is $sin(x)$
-- `cos()`: cosine, such as `cos(x)` is $cos(x)$
-- `tan()` or `tg()`: tangent, such as `tan(x)` is $tan(x)$
-- `exp()`: exponential, such as `exp(x)` is $e^x$
+- `sqrt()`: 平方根，比如 `sqrt(x)` 是 $\sqrt{x}$
+- `ln()`: 自然对数，比如 `ln(x)` 是 $\ln(x)$
+- `log()`: 通用对数，比如 `log(x)` 是 $log_{10}(x)$
+- `abs()`: 绝对值，比如 `abs(x)` 是 $|x|$
+- `sin()` 或 `sen()`: 正弦，比如 `sin(x)` 是 $sin(x)$
+- `cos()`: 余弦，比如 `cos(x)` 是 $cos(x)$
+- `tan()` 或 `tg()`: 正切，比如 `tan(x)` 是 $tan(x)$
+- `exp()`: 指数，比如 `exp(x)` 是 $e^x$
 
-### Constants
+### 常量
 
 - `pi`: $\pi$
 - `e`: $e$
 
-### Brackets
+### 括号
 
-- `(` and `)`: brackets. Using brackets more frequently to avoid incorrect order of operations.
+- `(` and `)`: 括号，多用括号以避免错误的运算顺序。
 
-## Useful functions
+## 有用的公式
 
-Some of the following content is from [Graphwar Tutorial Sant Albert '12](https://www.youtube.com/watch?v=E_MmkxTO5kg) and [graphwar meta that i use (EN)](https://www.youtube.com/watch?v=EHuQe7SKwkA)
+本节中有部分内容参考了 [Graphwar Tutorial Sant Albert '12](https://www.youtube.com/watch?v=E_MmkxTO5kg) 和 [graphwar meta that i use (EN)](https://www.youtube.com/watch?v=EHuQe7SKwkA)
 
-And you can combine them by summing and multiplying. Abstractly, summing means "OR", and multiplying means "AND".
+你你可以用加法和乘法阿来组合本节中的公式，抽象地说，加法意味着"或"，乘法意味着"和"。
 
-### Step (Sigmoid) function:
+### 台阶(Sigmoid)函数:
 
 $$
 \frac{k}{1+e^{-m(x-a)}}
 $$
 
-That is: `((k)/((1+exp(-m*(x-(a))))))`
+即：`((k)/((1+exp(-m*(x-(a))))))`
 
-where $m\in\mathbb{R}_+$ is a big positive number.
+其中$m\in\mathbb{R}_+$是个比较大的正数。
 
-This function can approximate the following function:
+该函数是以下函数的近似：
 
 $$
 \begin{cases}
@@ -167,45 +167,45 @@ k, & x\ge a
 \end{cases}
 $$
 
-That is, the function is 0 when $x\lt a$, and $k$ when $x\ge a$.
+即：若$x\lt a$，函数值为$0$，若$x\ge a$，函数值为$k$。
 
-In particular, let $k$ be a negative number to make the bullet move down.
+特别地，令$k$为负数可以让子弹向下移动。
 
 ![image-20260625204651483](./README.assets/image-20260625204651483.png)
 
 ![1782391863123334113](./README.assets/1782391863123334113.png)
 
-It's a very useful and simple function used to move and dodge obstacles.
+这是一个很有用且简单的函数，可以被用来移动和躲避障碍物。
 
-### Spike function:
+### 尖刺函数:
 
 $$
 \frac{h}{1+m(x-a)^2}
 $$
 
-That is: `((h)/(1+m*(x-a)^2))`
+即：`((h)/(1+m*(x-a)^2))`
 
-where $m\in\mathbb{R}_+$ is a big positive number.
+其中$m\in\mathbb{R}_+$是个比较大的正数。
 
-The function creates a spike at $x=a$ with height $h$.
+这个函数会在$x-a$处生成一个尖刺，高度为$h$。
 
 ![image-20260629231551089](./README.assets/image-20260629231551089.png)
 
 ![image-20260629231124761](./README.assets/image-20260629231124761.png)
 
-Compared to using something like $\frac{h}{1+m(x-a)^2}+\frac{-h}{1+m(x-a-0.1)^2}$, this function is simpler and easier to use.
+比起用类似$\frac{h}{1+m(x-a)^2}+\frac{-h}{1+m(x-a-0.1)^2}$的玩意，这个函数要简洁且易用。
 
-### Double absolute function:
+### 双绝对值函数:
 
 $$
 \frac{k}{2}(|x-a| - |x-b|)
 $$
 
-That is: `(0.5*(k)(abs(x-(a))-abs(x-(b))))`
+即：`(0.5*(k)(abs(x-(a))-abs(x-(b))))`
 
-where $a<b$
+其中$a<b$
 
-The function is equivalent to the following function:
+该函数与下面的函数等价：
 
 $$
 \begin{cases}
@@ -349,7 +349,7 @@ In a period $[kT,kT+T)$, the function will be $f$ if $x\in[kT,kT+p)$, otherwise 
 
 Based on this function, you can do many interesting things.
 
-## ODE mode
+## 微分方程模式
 
 ### Mechanism
 
