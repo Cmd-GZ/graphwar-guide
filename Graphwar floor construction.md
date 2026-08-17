@@ -1,10 +1,10 @@
 # Graphwar `floor` construction
 
-The article focus on how to construct approximations of $\operatorname{floor}$in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\operatorname{floor}$ that Graphwar can't handle on $x\in\Z$.
+The article focus on how to construct approximations of $\text{floor}$in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\text{floor}$ that Graphwar can't handle on $x\in\Z$.
 
 In fact, it contains 2 subquestions:
 
-1. How to construct a $\operatorname{floor}$ approximation only with operators in Graphwar without consider if it can run in Graphwar
+1. How to construct a $\text{floor}$ approximation only with operators in Graphwar without consider if it can run in Graphwar
 
 2. How to further process of the function in **1** (if it is needed) such that the final function can run in Graphwar normally
 
@@ -47,7 +47,7 @@ exp()
 
 ### Trivial solutions
 
-Notice that Fourier series can be used to approximate $\operatorname{floor}$:
+Notice that Fourier series can be used to approximate $\text{floor}$:
 $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\sum_{n=1}^N\frac{\sin(2n\pi x)}{n}
 $$
@@ -173,8 +173,8 @@ Replace $\cot(x)$ with it in the above formula, by controlling the size of $\var
 $$
 \lfloor x \rfloor \approx x-0.5+\frac{\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon}}{4+\sqrt{34+(2\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon})^{2}}}
 $$
-In Graphwar II, beacuse of the algorithm improvements, $\varepsilon$ can be arbitrarily close to $0$. But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\operatorname{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
+In Graphwar II, beacuse of the algorithm improvements, $\varepsilon$ can be arbitrarily close to $0$. But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\text{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
 
 ---
 
-Finally it's the expression of $\operatorname{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`
+Finally it's the expression of $\text{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`

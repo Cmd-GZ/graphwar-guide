@@ -1,10 +1,10 @@
 # Graphwar `floor` construction
 
-本文专注于如何在Graphwar中构造出 $\operatorname{floor}$ 函数的拟合，仅考虑拟合而不是 $0$ 误差的构建是因为在整数附近 $\operatorname{floor}$ 函数存在Graphwar无法处理的断点，导致我们不得不退而求其次
+本文专注于如何在Graphwar中构造出 $\text{floor}$ 函数的拟合，仅考虑拟合而不是 $0$ 误差的构建是因为在整数附近 $\text{floor}$ 函数存在Graphwar无法处理的断点，导致我们不得不退而求其次
 
 事实上，我们可以把这个问题拆分成两个子问题：
 
-1. 不考虑能否在Graphwar中正常运行，仅用Graphwar允许的算子构造出 $\operatorname{floor}$ 函数近似
+1. 不考虑能否在Graphwar中正常运行，仅用Graphwar允许的算子构造出 $\text{floor}$ 函数近似
 2. （如果需要的话）进一步处理**1**中的函数，使最终的函数能够在Graphwar中正常运行
 
 ### 前置知识
@@ -46,7 +46,7 @@ exp()
 
 ### 平凡解
 
-注意到可以利用傅里叶级数来拟合 $\operatorname{floor}$ 函数
+注意到可以利用傅里叶级数来拟合 $\text{floor}$ 函数
 $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\sum_{n=1}^N\frac{\sin(2n\pi x)}{n}
 $$
@@ -156,7 +156,7 @@ $$
 $$
 非整数点附近最大误差约为 $0.000485$
 
-最终我选择了由近似3得到的 $\operatorname{floor}$ 近似
+最终我选择了由近似3得到的 $\text{floor}$ 近似
 
 ### 去除断点
 
@@ -174,7 +174,7 @@ $$
 $$
 \lfloor x \rfloor \approx x-0.5+\frac{\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon}}{4+\sqrt{34+(2\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon})^{2}}}
 $$
-在Graphwar II中，由于函数计算方法的改进，$\varepsilon$可以被设置为任意接近$0$，但在Graphwar I中由于函数求值算法的缺陷所以无法这么做，在单 $\operatorname{floor}$ 下我测得最小的 $\varepsilon$ 约为 $0.0007$ ，但若考虑与其他函数复合，这个值的大小就需要具体情况具体分析了，这里不多赘述
+在Graphwar II中，由于函数计算方法的改进，$\varepsilon$可以被设置为任意接近$0$，但在Graphwar I中由于函数求值算法的缺陷所以无法这么做，在单 $\text{floor}$ 下我测得最小的 $\varepsilon$ 约为 $0.0007$ ，但若考虑与其他函数复合，这个值的大小就需要具体情况具体分析了，这里不多赘述
 
 ---
 
