@@ -1,6 +1,6 @@
 # Graphwar `floor` construction
 
-The article focus on how to construct approximations of $\text{floor}$in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\text{floor}$ that Graphwar can't handle on $x\in\Z$.
+The article focus on how to construct approximations of $\text{floor}$in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\text{floor}$ that Graphwar can't handle on $x\in\mathbb{Z}$.
 
 In fact, it contains 2 subquestions:
 
@@ -83,11 +83,11 @@ They are shorter then trivial solutions while maintaining high precision, where 
 
 My further attempts took a different path, consider $\arctan(\cot(x))$, where $\cot(x)=\frac{1}{\tan(x)}$, observe that it's a periodic function that satisfies the following relation:
 $$
-\arctan(\cot(x))=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi),k\in\Z
+\arctan(\cot(x))=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi),k\in\mathbb{Z}
 $$
 After simple transformation, we get:
 $$
-\lfloor x \rfloor=x-0.5+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\Z
+\lfloor x \rfloor=x-0.5+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\mathbb{Z}
 $$
 It seems that the 1st subquestions have been solved by the expression, but it's a pity that there are no inverse trigonometric functions in Graphwar. So we have to construct the approximation of $\arctan$.
 

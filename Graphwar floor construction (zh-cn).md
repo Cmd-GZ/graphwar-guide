@@ -84,11 +84,11 @@ $$
 
 考虑$\arctan(\cot(x))$（其中$\cot(x)=\frac{1}{\tan(x)}$），我们观察到他是一个满足以下关系的周期函数
 $$
-\arctan(\cot(x))=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi),k\in\Z
+\arctan(\cot(x))=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi),k\in\mathbb{Z}
 $$
 经过简单的变形我们可以得到
 $$
-\lfloor x \rfloor=x-0.5+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\Z
+\lfloor x \rfloor=x-0.5+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\mathbb{Z}
 $$
 似乎我们用这个表达式解决了第一个字问题，但很可惜Graphwar的提供的表达式中不存在反三角函数，所以我们还得构造 $\arctan$ 的近似
 
