@@ -275,7 +275,11 @@ $$
 where
 
 $$
-\text{sgn}(x)=\begin{cases}-1,&x\lt 0\\0,&x=0\\1,&x\gt 0\end{cases}
+\text{sgn}(x)=
+\begin{cases}-1,&x\lt 0\\
+0,&x=0\\
+1,&x\gt 0
+\end{cases}
 $$
 
 
