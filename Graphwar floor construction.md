@@ -1,6 +1,6 @@
 # Graphwar `floor` construction
 
-The article focus on how to construct approximations of $\text{floor}$in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\text{floor}$ that Graphwar can't handle on $x\in\mathbb{Z}$.
+The article focus on how to construct approximations of $\text{floor}$ in Graphwar. The reason of just consider approximations instead of $0$ error is that there are some breakpoints of $\text{floor}$ that Graphwar can't handle on $x\in\mathbb{Z}$.
 
 In fact, it contains 2 subquestions:
 
@@ -72,9 +72,9 @@ $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\sum_{n=1}^N\frac{\sin(2n\pi x)}{n}
 $$
 
-Or, we can approximate it with the sum of several sigmoid (step) functions. Since the $x$-axis range of Graphwar is [-25,25)$, we get the following construction:
-$$
+Or, we can approximate it with the sum of several sigmoid (step) functions. Since the $x$-axis range of Graphwar is $[-25,25)$, we get the following construction:
 
+$$
 \lfloor x\rfloor\approx-26+\sum_{n=-25}^{25}s(x-n)
 $$
 
@@ -134,7 +134,7 @@ Approximating $\arcsin$ with $\frac{\pi}{2}x$, we get $\arctan(x)\approx\frac{\p
 
 Adding an undetermined constant term $c$ to the denominator of $\frac{x}{\sqrt{1+x^2}}$ gives $\frac{x}{\sqrt{1+x^2}+c}$
 
-Let $f(x)=\frac{x}{\sqrt{1+x^2}+c}$, considering that $\arctan'(0)=0$, let$f'(0)=0$, we get $c=\frac{\pi}{2}-1$
+Let $f(x)=\frac{x}{\sqrt{1+x^2}+c}$, considering that $\arctan'(0)=0$, let $f'(0)=0$, we get $c=\frac{\pi}{2}-1$
 
 So
 
@@ -158,9 +158,9 @@ When I lost in the identity $\arctan(x)=\arcsin(\frac{x}{\sqrt{1+x^2}})$ and try
 
 Let $f(x)=\frac{ax}{b+\sqrt{c+x^2}}$
 
-Notice that$\arctan'(0)=1,\arctan(1)=\frac{\pi}{4},\lim\limits_{x\to\infty}\arctan(x)=\frac{\pi}{2}$
+Notice that $\arctan'(0)=1,\arctan(1)=\frac{\pi}{4},\lim\limits_{x\to\infty}\arctan(x)=\frac{\pi}{2}$
 
-Solve the equation system obtained by replace $\arctan(x)$with $f(x)$, we get:
+Solve the equation system obtained by replace $\arctan(x)$ with $f(x)$, we get:
 
 $$
 \begin{cases}
