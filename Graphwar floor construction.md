@@ -8,7 +8,7 @@ In fact, it contains 2 subquestions:
 
 2. How to further process of the function in **1** (if it is needed) such that the final function can run in Graphwar normally
 
-### Prerequisites
+## Prerequisites
 
 Graphwar allows and only allows the following operators:
 $$
@@ -45,7 +45,7 @@ tan() or tg()
 exp()
 ```
 
-### Trivial solutions
+## Trivial solutions
 
 Notice that Fourier series can be used to approximate $\text{floor}$:
 $$
@@ -67,9 +67,9 @@ The Fourier approximation converges so slowly that the precision is still very l
 
 Indeed the sum of Sigmoid functions construction can yield a high precision result, but its expression is too long (and so does Fourier form) to be used in actual situation.
 
-### The answers from a discord server member
+## The answers from Finnley
 
-After initial attempts failed, I sent this question to the official discord server of Graphwar to ask for help. **Finnley** gave two pretty nice answers:
+After initial attempts failed, I sent this question to the official discord server of Graphwar to ask for help. One of the member of the server, Finnley gave two pretty nice answers:
 $$
 \lfloor x\rfloor\approx x-\left(\frac{\left(\sin\left(\frac{\pi x}{2}\right)\right)^{2}}{1+e^{-500\sin\left(\pi x\right)}}+\frac{\left(\sin\left(\frac{\pi\left(x-1\right)}{2}\right)\right)^{2}}{1+e^{500\sin\left(\pi x\right)}}+0.1\sin\left(2\pi x\right)\left(1+0.077\sin\left(\frac{3\pi x}{\sin\left(\pi x\right)}\right)\right)\right)
 $$
@@ -77,9 +77,9 @@ and:
 $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{1}{2}\right)}{2}\right)}}}{3+e^{-500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{3}{2}\right)}{2}\right)}}}{3+e^{500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}
 $$
-They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at the points far from integers is about 0.02$ and$0.0005$ and also solves the 2nd subquestion naturally.
+They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at the points far from integers is about $0.02$ and $0.0005$ and also solves the 2nd subquestion naturally.
 
-### Arctangent
+## Arctangent
 
 My further attempts took a different path, consider $\arctan(\cot(x))$, where $\cot(x)=\frac{1}{\tan(x)}$, observe that it's a periodic function that satisfies the following relation:
 $$
@@ -87,11 +87,13 @@ $$
 $$
 After simple transformation, we get:
 $$
-\lfloor x \rfloor=x-0.5+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\mathbb{Z}
+\lfloor x \rfloor=x-\frac{1}{2}+\frac{1}{\pi}\arctan\left(\cot\left(\pi x\right)\right),x\notin\mathbb{Z}
 $$
-It seems that the 1st subquestions have been solved by the expression, but it's a pity that there are no inverse trigonometric functions in Graphwar. So we have to construct the approximation of $\arctan$.
+### Approximation
 
-#### 1st approximation:
+It seems that the 1st subquestion have been solved by the expression, but it's a pity that there are no inverse trigonometric functions in Graphwar. So we have to construct the approximation of $\arctan$.
+
+#### 1st try
 
 My first thought was the the identity: $\arctan(x)=\arcsin(\frac{x}{\sqrt{1+x^2}})$
 
@@ -113,9 +115,9 @@ $$
 $$
 The maximum error at points far from integers is about $0.004$
 
-#### 2nd approximation:
+#### 2nd try
 
-When I lost in the identity $\arctan(x)=\arcsin(\frac{x}{\sqrt{1+x^2}})$ and try to get a further $\arcsin(x)$ approximation,  **Finnley** found a better $\arctan(x)$ approximation:
+When I lost in the identity $\arctan(x)=\arcsin(\frac{x}{\sqrt{1+x^2}})$ and try to get a further $\arcsin(x)$ approximation,  Finnley found a better $\arctan(x)$ approximation:
 
 Let $f(x)=\frac{ax}{b+\sqrt{c+x^2}}$
 
@@ -141,13 +143,13 @@ $$
 $$
 The maximum error at points far from integers is about $0.0007$
 
-### 3rd approximation
+#### 3rd try
 
 Finally I found the approximation in [Inigo Quilez](https://iquilezles.org/)'s website:
 $$
 \arctan(x)\approx\frac{\pi^2x}{4+\sqrt{34+(2\pi x)^2}}
 $$
-The maximum error is $0.001524$
+The maximum error is $0.001525$
 
 Finally we get:
 $$
@@ -157,9 +159,11 @@ The maximum error at points far from integers is about $0.000485$
 
 I chose the 3rd approximation as the final result
 
-### Remove breakpoints
+### Eliminate breakpoints
 
-The 1st subquestion has been solved, but the 2nd one haven't. The above expression will be terminated when it passes through the integers because their slope is too high to be handled by Graphwar or any discontinuous point is used as the sampling point. But luckily it's very easy to be solved.
+The 1st subquestion has been solved, but the 2nd one haven't. The above expression will be terminated when it passes through the integers because their slope is too high to be handled by Graphwar or any discontinuous point is used as the sampling point.
+
+#### Continuous cotangent
 
 Consider the following identity:
 $$
@@ -169,12 +173,118 @@ Add a very small positive number to the denominator of it, we get:
 $$
 \cot(x)\approx\frac{\sin(2x)}{1-\cos(2x)+\varepsilon}
 $$
-Replace $\cot(x)$ with it in the above formula, by controlling the size of $\varepsilon$, at the cost of some precision, we can control the function's slope while eliminating breakpoints to ensure that the function does not terminate in Graphwar.
+Replace $\cot(x)$ with it in the above formula in **3rd try**, by controlling the size of $\varepsilon$, at the cost of some precision, we can control the function's slope while eliminating breakpoints to ensure that the function does not terminate in Graphwar.
 $$
-\lfloor x \rfloor \approx x-0.5+\frac{\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon}}{4+\sqrt{34+(2\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon})^{2}}}
+\lfloor x \rfloor \approx x-\frac{1}{2}+\frac{\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon}}{4+\sqrt{34+(2\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon})^{2}}}
 $$
-In Graphwar II, beacuse of the algorithm improvements, $\varepsilon$ can be arbitrarily close to $0$. But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\text{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
+In Graphwar II, because of the algorithm improvements, $\varepsilon$ can be arbitrarily close to $0$. But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\text{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
+
+Finally it's the expression of $\text{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`
+
+#### The End?
+
+It's hard to control the value of $\varepsilon$ to ensure the above formula maintains high precision and does not terminate early sometime if it's used to combine with other functions in Graphwar I. Furthermore, $x$ appears so many times that if you want to construct a composite function like $\lfloor\sin(x)\rfloor$, you have to replace $x$ for $5$ times. Is there a new way to get a better $\text{floor}$ approximation?
+
+Consider the following relationship between $\arcsin$ and $\arctan$:
+$$
+\arcsin(x)=\arctan\left(\frac{x}{\sqrt{1-x^2}}\right)
+$$
+Replace $x$ with $\frac{x}{\sqrt{1-x^2}}$ in the $\arctan$ approximation in **3rd try**, we get a $\arcsin$ approximation with $0.001525$ maximum error:
+$$
+\arcsin(x)\approx\frac{\pi^2\frac{x}{\sqrt{1-x^2}}}{4+\sqrt{34+(2\pi \frac{x}{\sqrt{1-x^2}})^2}}
+$$
+Similarly, the rest inverse trigonometric function approximations can be obtained in the same way.
+
+After getting the construction, just for fun, I tried constructing an interesting expression with it in Graphwar:
+$$
+\frac{\pi^2\frac{\sin(x)}{\sqrt{1-\sin^2(x)}}}{4+\sqrt{34+(2\pi \frac{\sin(x)}{\sqrt{1-\sin^2(x)}})^2}}\approx\arcsin(\sin(x))=
+\begin{cases}
+x-2k\pi,&x\in[-\frac{\pi}{2}+2k\pi,\frac{\pi}{2}+2k\pi]\\
+-x+2k\pi,&x\in[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi]
+\end{cases}\\
+k\in\mathbb{Z}
+$$
+Finnley realized immediately that it can also be used to make another $\text{floor}$ approximation
+
+Consider the similar form and let it be $\phi(x)$:
+$$
+\phi(x)=\frac{\pi^2\frac{\cos(x)}{\sqrt{1-\cos^2(x)}}}{4+\sqrt{34+(2\pi \frac{\cos(x)}{\sqrt{1-\cos^2(x)}})^2}}\approx\arcsin(\cos(x))=
+\begin{cases}
+x+\frac{\pi}{2}-2k\pi,&x\in[-\pi+2k\pi,2k\pi]\\
+-x+\frac{\pi}{2}+2k\pi,&x\in[2k\pi,\pi+2k\pi]
+\end{cases}\\
+k\in\mathbb{Z}
+$$
+Observe that if $x\ne k\pi$, we have:
+$$
+\arcsin(\cos(x))\text{sgn}(\sin(x))=\begin{cases}
+-x-\frac{\pi}{2}+2k\pi,&x\in(-\pi+2k\pi,2k\pi)\\
+-x+\frac{\pi}{2}+2k\pi,&x\in(2k\pi,\pi+2k\pi)
+\end{cases}
+=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi)
+=
+\arctan(\cot(x))\\
+$$
+where
+$$
+\text{sgn}(x)=\begin{cases}-1,&x\lt0\\0,&x=0\\1,&x\gt0\end{cases}
+$$
+
+
+By **Arctangent**, we get
+$$
+\lfloor x \rfloor=x-\frac{1}{2}+\frac{1}{\pi}\arcsin(\cos(\pi x))\text{sgn}(\sin(\pi x)),x\notin\mathbb{Z}
+$$
+A continuous approximation of $\text{sgn}(x)$ which can also eliminate breakpoints is:
+$$
+\text{sgn}(x)\approx\tanh(Mx)=1-\frac{2}{1+e^{2Mx}}
+$$
+where $M$ is a large number
+
+Combine them, we get:
+$$
+\lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\phi(\pi x)\tanh(M\sin(x))=x-0.5+\frac{\frac{\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)}{4+\sqrt{34+\left(\frac{2\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\right)^{2}}}
+$$
+Now, without controlling $\varepsilon$ and loss of precision, we get a stable approximation that can be combine with almost any function and works normally in Graphwar I
+
+However, it's longer than the approximation in **3rd try**, and $x$ appears $6$ times, a higher frequency.
+
+Notice that
+$$
+\cot^2(\pi x)=\frac{1}{\tan^2(\pi x)}=\left(\frac{\cos(\pi x)}{\sqrt{1-\cos^2(\pi x)}}\right)^2
+$$
+We get
+$$
+x-0.5+\frac{\frac{\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^2\left(\pi x\right)}}\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)}{4+\sqrt{34+\left(\frac{2\pi}{\tan(\pi x)}\right)^{2}}}
+$$
+A natural idea is: What about $\frac{\cos\left(\pi x\right)}{\sqrt{1-\cos^2\left(\pi x\right)}}$?
+
+It's clearly that:
+$$
+\sin(x)=
+\begin{cases}
+\sqrt{1-\cos^2(x)},&\sin(x)\ge0\\
+-\sqrt{1-\cos^2(x)},&\sin(x)\le0
+\end{cases}
+$$
+So we have
+$$
+\sin(x)=\text{sgn}(\sin(x))\sqrt{1-\cos^2(x)}
+$$
+So
+$$
+\cot(\pi x)=\frac{1}{\tan(\pi x)}=\frac{\cos(\pi x)}{{\sin(\pi x)}}=\frac{\cos(\pi x)}{\text{sgn}(\sin(\pi x))\sqrt{1-\cos^2(\pi x)}}
+$$
+That is:
+$$
+\frac{\cos\left(\pi x\right)}{\sqrt{1-\cos^2\left(\pi x\right)}}=\frac{\text{sgn}(sin(\pi x))}{\tan(\pi x)}\approx\frac{1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}}{\tan(\pi x)}
+$$
+Finally we get:
+$$
+\lfloor x\rfloor\approx x-0.5+\frac{\pi\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)^{2}}{\tan(\pi x)\left(4+\sqrt{34+\left(\frac{2\pi}{\tan(\pi x)}\right)^{2}}\right)}
+$$
+which is much shorter than the **3rd try** form and there are only $4$ $x$'s in the formula smaller than the original $5$.
 
 ---
 
-Finally it's the expression of $\text{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`
+Similarly, here is the expression that can be used in Graphwar: `x-0.5+(pi(1-2/(1+e^(500sin(pix))))^2)/(tan(pix)(4+sqrt(34+(2pi/tan(pix))^2)))`
