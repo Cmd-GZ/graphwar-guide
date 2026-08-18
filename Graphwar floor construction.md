@@ -8,6 +8,22 @@ In fact, it contains 2 subquestions:
 
 2. How to further process of the function in **1** (if it is needed) such that the final function can run in Graphwar normally
 
+## Content
+
+- [Graphwar `floor` construction](#graphwar-floor-construction)
+  - [Content](#content)
+  - [Prerequisites](#prerequisites)
+  - [Trivial solutions](#trivial-solutions)
+  - [The answers from Finnley](#the-answers-from-finnley)
+  - [Arctangent](#arctangent)
+    - [Approximation](#approximation)
+      - [1st try](#1st-try)
+      - [2nd try](#2nd-try)
+      - [3rd try](#3rd-try)
+    - [Eliminate breakpoints](#eliminate-breakpoints)
+      - [Continuous cotangent](#continuous-cotangent)
+  - [The End?](#the-end)
+
 ## Prerequisites
 
 Graphwar allows and only allows the following operators:
@@ -218,7 +234,7 @@ In Graphwar II, because of the algorithm improvements, $\varepsilon$ can be arbi
 
 Finally it's the expression of $\text{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`
 
-#### The End?
+## The End?
 
 It's hard to control the value of $\varepsilon$ to ensure the above formula maintains high precision and does not terminate early sometime if it's used to combine with other functions in Graphwar I. Furthermore, $x$ appears so many times that if you want to construct a composite function like $\lfloor\sin(x)\rfloor$, you have to replace $x$ for $5$ times. Is there a new way to get a better $\text{floor}$ approximation?
 
@@ -228,7 +244,7 @@ $$
 \arcsin(x)=\arctan\left(\frac{x}{\sqrt{1-x^2}}\right)
 $$
 
-Replace $x$ with $\frac{x}{\sqrt{1-x^2}}$ in the $\arctan$ approximation in **3rd try**, we get a $\arcsin$ approximation with $0.001525$ maximum error:
+Replace $x$ with $\frac{x}{\sqrt{1-x^2}}$ in the $\arctan$ approximation in [3rd try](#3rd-try), we get a $\arcsin$ approximation with $0.001525$ maximum error:
 
 $$
 \arcsin(x)\approx\frac{\pi^2\frac{x}{\sqrt{1-x^2}}}{4+\sqrt{34+(2\pi \frac{x}{\sqrt{1-x^2}})^2}}
@@ -283,7 +299,7 @@ $$
 $$
 
 
-By **Arctangent**, we get
+By [Arctangent](#arctangent), we get
 
 $$
 \lfloor x \rfloor=x-\frac{1}{2}+\frac{1}{\pi}\arcsin(\cos(\pi x))\text{sgn}(\sin(\pi x)),x\notin\mathbb{Z}
@@ -305,7 +321,7 @@ $$
 
 Now, without controlling $\varepsilon$ and loss of precision, we get a stable approximation that can be combine with almost any function and works normally in Graphwar I
 
-However, it's longer than the approximation in **3rd try**, and $x$ appears $6$ times, a higher frequency.
+However, it's longer than the approximation in [3rd try](#3rd-try), and $x$ appears $6$ times, a higher frequency.
 
 Notice that
 
@@ -355,7 +371,7 @@ $$
 \lfloor x\rfloor\approx x-0.5+\frac{\pi\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)^{2}}{\tan(\pi x)\left(4+\sqrt{34+\left(\frac{2\pi}{\tan(\pi x)}\right)^{2}}\right)}
 $$
 
-which is much shorter than the **3rd try** form and there are only $4$ $x$'s in the formula smaller than the original $5$.
+which is much shorter than the [3rd try](#3rd-try) form and there are only $4$ $x$'s in the formula smaller than the original $5$.
 
 ---
 
