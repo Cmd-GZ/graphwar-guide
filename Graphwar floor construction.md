@@ -13,6 +13,7 @@ In fact, it contains 2 subquestions:
 Graphwar allows and only allows the following operators:
 
 $$
+\begin{cases}
 \square+\square\\
 \square-\square\\
 \square\times\square\\
@@ -26,6 +27,7 @@ $$
 \cos\square\\
 \tan\square\\
 \exp\square
+\end{cases}
 $$
 
 Their syntaxes are:
