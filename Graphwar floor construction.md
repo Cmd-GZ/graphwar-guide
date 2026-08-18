@@ -263,13 +263,13 @@ $$
 Observe that if $x\ne k\pi$, we have:
 
 $$
-\arcsin(\cos(x))\text{sgn}(\sin(x))=\begin{cases}
+\arcsin(\cos(x))\text{sgn}(\sin(x))=
+\begin{cases}
 -x-\frac{\pi}{2}+2k\pi,&x\in(-\pi+2k\pi,2k\pi)\\
 -x+\frac{\pi}{2}+2k\pi,&x\in(2k\pi,\pi+2k\pi)
 \end{cases}
-=-x+\frac{\pi}{2}+k\pi,x\in(k\pi,(k+1)\pi)
-=
-\arctan(\cot(x))\\
+=-x+\frac{\pi}{2}+k\pi,\quad x\in(k\pi,(k+1)\pi)
+=\arctan(\cot(x))
 $$
 
 where
