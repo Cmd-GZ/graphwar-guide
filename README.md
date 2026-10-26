@@ -62,7 +62,7 @@ $$
 
 ![https://www.graphwar.com/ss2Graphwar.png](./README.assets/ss2Graphwar.png)
 
-That is, instead of treating the position of the launcher as the origin of your function curve, the game will ensure that the function curve always passes through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Try using $(x-x_0)^2$ or $(x-x_0)^3$ to make it kinda normal.
+That is, instead of treating the position of the launcher as the origin of your function curve, the game will ensure that the function curve always passes through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Try using $(x-x_0)^2$ or $(x-x_0)^3$, or just multiply it by a small coefficient, to make it kinda normal.
 
 ![image-20260625195704528](./README.assets/image-20260625195704528.png)
 
@@ -94,13 +94,13 @@ If the function is undefined at the point that bullet passes through, like $y=\s
 
 ![image-20260625200104823](./README.assets/image-20260625200104823.png)
 
-If the function value is too large, or more fundamentally and more generally, the function value is `NaN`, the bullet will disappear.
+If the function value is too large, or — more generally — if any intermediate value evaluates to `NaN`, the bullet will disappear.
 
 ![image-20260625201945265](./README.assets/image-20260625201945265.png)
 
 ![image-20260629223755887](./README.assets/image-20260629223755887.png)
 
-The distance your bullet can move, that is, the length of your function curve, is finite. If the distance is too long, the bullet will disappear. That's why something like $\sin(100x)$ usually doesn't work.
+The distance your bullet can move, that is, the length of your function curve, is bounded. If the distance is too long, the bullet will disappear. That's why something like $\sin(100x)$ usually doesn't work.
 
 ![image-20260625200328666](./README.assets/image-20260625200328666.png)
 
@@ -225,7 +225,7 @@ which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function with sl
 
 ### Sine and cosine function:
 
-Although $\sin$ and $\cos$ are very basic, they are very useful to sweep a wide area if you give them a big angular velocity.
+Although $\sin$ and $\cos$ are very basic, they are very useful to sweep a wide area if you make the period short and the amplitude large.
 
 ![image-20260625211651927](./README.assets/image-20260625211651927.png)
 
@@ -355,13 +355,13 @@ Based on this function, you can do many interesting things.
 
 As you can see, there are 2 modes of ODE mode: `y'` mode and `y''` mode, corresponding to the first and second derivatives of $y$ with respect to $x$.
 
-Like the normal mode, you can input any function expression in the input box to set the trajectory of your bullet. But it allows you to use variables other than $x$, like $y$ in `y'` mode and $y,y'$ in `y''` mode. (For the variable `y'`. There was a bug in the previous version which made it would be matched with `y` instead of `y'`. But it has been fixed in the latest version. So remember to update your game.)
+Like the normal mode, you can input any function expression in the input box to set the trajectory of your bullet. But it allows you to use variables other than $x$, like $y$ in `y'` mode and $y,y'$ in `y''` mode. (For the variable `y'`, there was a bug in the previous version that made it match `y` instead of `y'`. But it has been fixed in the latest version. So remember to update your game.)
 
 ![image-20260629184937660](./README.assets/image-20260629184937660.png)
 
 As [Syntax](#syntax) said, `y` means $y$, and `y'` means $\frac{dy}{dx}$.
 
-Instead of regarding the expression as a function, the game will treat it as an explicit ordinary differential equation (ODE) to describe the moving curve of your bullet. But it is still essentially a function, so like the normal mode, you can't let the bullet to move to left.
+Instead of regarding the expression as a function, the game will treat it as an explicit ordinary differential equation (ODE) to describe the moving curve of your bullet. But it is still essentially a function, so, like in the normal mode, you can't make the bullet move to the left.
 
 Assume you have understood the above stuff, I will show you how the bullet moves in ODE mode.
 
@@ -384,7 +384,7 @@ Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy
 
 $$
 \begin{cases}
-\frac{dy}{dx}=E(x,y,\frac{dy}{dx})\\
+\frac{d^2y}{dx^2}=E(x,y,\frac{dy}{dx})\\
 y(x_0)=y_0\\
 \frac{dy}{dx}(x_0)=\tan\theta
 \end{cases}
@@ -484,7 +484,7 @@ $$
 } \qquad (4)
 $$
 
-Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$ with $o(h^4)$ error.
+Compute $\mathbf{Y}_0\cdots,\mathbf{Y}_n$ using the recursive formula $(4)$, then you get $\{\mathbf{Y}_0,\mathbf{Y}_1,\cdots,\mathbf{Y}_n\}$: the point set of the graph of $(1)$ in $[x_0,x_0+nh]$, with an $O(h^4)$ global error (the local error is $O(h^5)$).
 
 Particularly, in `y'` mode, we have
 
@@ -507,7 +507,7 @@ The specific implementation of the algorithm of the game as follows:
 
 Perhaps you'll say that it's too difficult to construct a curve you want in ODE mode, it seems that the useful functions and skills in the normal mode are useless stuff here. Because it looks like you have to compute the first order or even the second order derivative of the above functions, which is too complex and even almost impossible in some cases such as `abs()`. But don't worry, what if I tell you there is a way to approximate the function in normal mode using a simple ODE to avoid any derivative?
 
-Next let's assume the function you want to cook is $f$, the following way can make the moving curve of your bullet **EXACTLY** the approximation to the curve of $f$ i.e. it is not like the normal mode, $f$ won't be shifted up or down. That is, you don't need to guess your $y_0$ coordinate any more if you use the skill I'll tell in ODE mode. So from the point, it seems that the ODE mode is easier than the normal mode.
+Next let's assume the function you want to cook is $f$. The following way makes the moving curve of your bullet **EXACTLY** $f$ — i.e., unlike the normal mode, $f$ won't be shifted up or down. (Strictly speaking it is an approximation with a small wobble; we will bound its size in a moment.) That is, you don't need to guess your $y_0$ coordinate any more if you use the skill I'll tell in ODE mode. So from the point, it seems that the ODE mode is easier than the normal mode.
 
 Let $M$ be a big positive number, normally $M=233$ is enough. (If $M$ is too big, the final curve will oscillate so frequently that the length of the curve will easily exceed the upper bound.)
 
@@ -559,7 +559,7 @@ y(x)&=e^{-M(x-x_0)}y_0+e^{-Mx}\int_{x_0}^xMf(t)e^{Mt}dt\\
 &=e^{-M(x-x_0)}y_0+e^{-Mx}\left.f(t)e^{Mt}\right|_{x_0}^x-e^{-Mx}\int_{x_0}^xe^{Mt}df(t)\\
 &=e^{-M(x-x_0)}y_0+f(x)e^{Mx}e^{-Mx}-f(x_0)e^{Mx_0}e^{-Mx}-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
 &=f(x)+(y_0-f(x_0))e^{-M(x-x_0)}-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
-&=f(x)+\text{O}(\frac{1}{e^M})-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
+&=f(x)+\text{O}\bigl(e^{-M(x-x_0)}\bigr)-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\\
 \end{aligned}
 $$
 
@@ -572,7 +572,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt+\text{O}(\frac{1}{e^M})
+y(x)=f(x)-e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt+\text{O}\bigl(e^{-M(x-x_0)}\bigr)
 $$
 
 ​	Since $f'$ is bounded
@@ -581,8 +581,8 @@ $$
 
 $$
 \begin{aligned}
-\left|e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\right|&\le e^{-Mx}\int_{x_0}^x|e^{Mx}||f'(x)|dx\\
-&\le (\sup|f'|)e^{-Mx}\int_{x_0}^xe^{Mx}dx\\
+\left|e^{-Mx}\int_{x_0}^xe^{Mt}f'(t)dt\right|&\le e^{-Mx}\int_{x_0}^xe^{Mt}|f'(t)|dt\\
+&\le (\sup|f'|)e^{-Mx}\int_{x_0}^xe^{Mt}dt\\
 &\le (\sup|f'|)e^{-Mx}\frac{e^{Mx}-e^{Mx_0}}{M}\\
 &\le (\sup|f'|)e^{-Mx}\frac{e^{Mx}}{M}\\
 &\le \frac{\sup|f'|}{M}\\
@@ -598,7 +598,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)+\text{O}(\frac{1}{M})+\text{O}(\frac{1}{e^M})=f(x)+\text{O}(\frac{1}{M})
+y(x)=f(x)+\text{O}(\frac{1}{M})+\text{O}\bigl(e^{-M(x-x_0)}\bigr)=f(x)+\text{O}(\frac{1}{M})
 $$
 
 ​	So $y(x)=f(x)+\text{O}(\frac{1}{M})$
@@ -705,7 +705,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)-\int_{x_0}^xU(x,t)f'(t)dt+\text{O}(\frac{M}{e^{M}})
+y(x)=f(x)-\int_{x_0}^xU(x,t)f'(t)dt+\text{O}\bigl((1+M(x-x_0))e^{-M(x-x_0)}\bigr)
 $$
 
 ​	Since $f'$ is bounded
@@ -731,7 +731,7 @@ $$
 ​	So
 
 $$
-y(x)=f(x)+\text{O}(\frac{1}{M})+\text{O}(\frac{M}{e^{M}})=f(x)+\text{O}(\frac{1}{M})
+y(x)=f(x)+\text{O}(\frac{1}{M})+\text{O}\bigl((1+M(x-x_0))e^{-M(x-x_0)}\bigr)=f(x)+\text{O}(\frac{1}{M})
 $$
 
 ​	So $y(x)=f(x)+\text{O}(\frac{1}{M})$
