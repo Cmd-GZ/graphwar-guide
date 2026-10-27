@@ -92,7 +92,7 @@ and $M$ is a large number
 
 Both of them have huge problems although they can also solve the 2nd subquestion naturally.
 
-The Fourier approximation converges so slowly that the precision is still very low after accumulating dozens of terms: the  maximum error at distance $>0.05$ from the integers is about $0.02$ if $N=60$. Moreover, regardless of $N$ as big as, the Gibbs phenomenon exists near integer points, that is, the function will overshoot and oscillate, whose error can' t be eliminated.
+The Fourier approximation converges so slowly that the precision is still very low after accumulating dozens of terms: the  maximum error at distance $\gt 0.05$ from the integers is about $0.02$ if $N=60$. Moreover, regardless of $N$ as big as, the Gibbs phenomenon exists near integer points, that is, the function will overshoot and oscillate, whose error can' t be eliminated.
 
 Indeed the sum of Sigmoid functions construction can yield a high precision result, but its expression is too long (and so does Fourier form) to be used in actual situation.
 
@@ -110,7 +110,7 @@ $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{1}{2}\right)}{2}\right)}}}{3+e^{-500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{3}{2}\right)}{2}\right)}}}{3+e^{500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}
 $$
 
-They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at distance $>0.05$ and $>0.2$ from the integers is about $0.02$ and $0.0005$ and also solves the 2nd subquestion naturally.
+They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at distance $\gt 0.05$ and $\gt 0.2$ from the integers is about $0.02$ and $0.0005$ and also solves the 2nd subquestion naturally.
 
 ## Arctangent
 
@@ -419,7 +419,7 @@ $$
 Integrating from $x_0$, and using $\int^{x}\delta(t-k)\,dt=H(x-k)$ with $H$ the Heaviside step ($x_0\notin\mathbb{Z}$):
 
 $$
-y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+|\{k\in\mathbb{Z}: x_0<k\le x\}|
+y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+|\{k\in\mathbb{Z}: x_0\lt k\le x\}|
 $$
 
 The number of integers in $(x_0,x]$ is exactly $\lfloor x\rfloor-\lfloor x_0\rfloor$, hence
