@@ -23,6 +23,10 @@ In fact, it contains 2 subquestions:
     - [Eliminate breakpoints](#eliminate-breakpoints)
       - [Continuous cotangent](#continuous-cotangent)
   - [The End?](#the-end)
+  - [DLC](#dlc)
+    - [ODE Mode](#ode-mode)
+      - [`y'` mode](#y-mode)
+      - [`y''` mode](#y-mode-1)
 
 ## Prerequisites
 
@@ -376,3 +380,211 @@ which is much shorter than the [3rd try](#3rd-try) form and there are only $4$ $
 ---
 
 Similarly, here is the expression that can be used in Graphwar: `x-0.5+(pi(1-2/(1+e^(Msin(pix))))^2)/(tan(pix)(4+sqrt(34+(2pi/tan(pix))^2)))`
+
+## DLC
+
+### ODE Mode
+
+#### `y'` mode
+
+Consider the Dirac function $\delta(x)$ with the following property:
+
+$$
+\int\delta(x)\psi(x)dx=\psi(0)\\
+\delta(ax)=\frac{1}{|a|}\delta(x)\\
+\delta(\psi(x))=\sum_{\psi(r)=0}\frac{\delta(x-r)}{|\psi'(r)|}
+$$
+
+Where $\psi(x)$ is an arbitrary function.
+
+Let $\psi(x)=\sin(\pi x)$. Its roots are $r=k\in\mathbb{Z}$, with $\psi'(k)=\pi\cos(k\pi)=(-1)^k\pi$, so $|\psi'(k)|=\pi$.
+
+So:
+
+$$
+\delta(\sin(\pi x))=\sum_{k}\frac{\delta(x-k)}{|\psi'(k)|}=\frac{1}{\pi}\sum_{k}\delta(x-k)
+\qquad\Longrightarrow\qquad
+\pi\,\delta(\sin(\pi x))=\sum_{k}\delta(x-k)
+$$
+
+Consider the IVP (the bullet only ever moves to the right, so we only need $x\ge x_0$):
+
+$$
+\begin{cases}
+\dfrac{dy}{dx}=\pi\delta(\sin(\pi x))=\sum_{k}\delta(x-k)\\[6pt]
+y(x_0)=y_0
+\end{cases}
+$$
+
+Integrating from $x_0$, and using $\int^{x}\delta(t-k)\,dt=H(x-k)$ with $H$ the Heaviside step ($x_0\notin\mathbb{Z}$):
+
+$$
+y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+\#\{k\in\mathbb{Z}: x_0<k\le x\}
+$$
+
+The number of integers in $(x_0,x]$ is exactly $\lfloor x\rfloor-\lfloor x_0\rfloor$, hence
+
+$$
+y(x)=\lfloor x\rfloor+y_0-\lfloor x_0\rfloor
+$$
+
+
+Which means that if we can find a Dirac function approximation, we can easily get the floor function approximation in `y'` mode.
+
+It's easy to get them:
+
+**Gaussian**
+
+$$
+\delta_a(x)=\frac{1}{a\sqrt{\pi}}e^{-(x/a)^2}
+$$
+
+$$
+y'=\frac{\sqrt{\pi}}{a}e^{-\left(\frac{\sin\pi x}{a}\right)^2}
+$$
+
+```text
+sqrt(pi)/a*e^(-(sin(pix)/a)^2)
+```
+
+**Lorentzian (Cauchy)**
+
+$$
+\delta_a(x)=\frac{a}{\pi(x^2+a^2)}
+$$
+
+$$
+y'=\frac{a}{\sin^2\pi x+a^2}
+$$
+
+```text
+a/(sin(pix)^2+a^2)
+```
+
+**$\text{sech}^2$**
+
+$$
+\delta_a(x)=\frac{1}{2a}\text{sech}^2\frac{x}{a}
+$$
+
+$$
+y'=\frac{\pi}{2a}\text{sech}^2\left(\frac{\sin\pi x}{a}\right)
+$$
+
+```text
+2*pi/a*e^(-2abs(sin(pix)/a))/(1+e^(-2abs(sin(pix)/a)))^2
+```
+
+**Rectangular (box)**
+
+$$
+\delta_a(x)=\frac{1}{2a}\mathbf{1}_{\{|x|<a\}}
+$$
+
+$$
+y'=\frac{1}{2a}\cdot\frac{1}{1+e^{-M(\cos 2\pi x-\cos 2\pi a)}}
+$$
+
+```text
+1/(2*a)/(1+e^(-M*(cos(2pix)-cos(2*pi*a))))
+```
+
+#### `y''` mode
+
+For this mode, I'll just consider the trival way, that is, the derivative of the Dirac function $\delta'(x)$, just because it's the easiest way.
+
+Similarly, for $\delta'(x)$, we have the following property:
+
+$$
+\int\delta'(x)\psi(x)dx=-\psi'(0)\\
+\delta'(ax)=\frac{1}{a|a|}\delta'(x)\\
+\delta'(\psi(x))=\sum_{\psi(r)=0}\frac{\delta'(x-r)}{\psi'(r)|\psi'(r)|}
+$$
+
+Where $\psi(x)$ is an arbitrary function.
+
+Consider $\pi^2\cos(\pi x)\delta'(\sin\pi x)$. With $\psi(x)=\sin(\pi x)$ again and $\psi'(k)=(-1)^k\pi$, the composition rule gives
+
+$$
+\delta'(\sin\pi x)=\sum_{k}\frac{\delta'(x-k)}{\psi'(k)|\psi'(k)|}=\sum_{k}\frac{\delta'(x-k)}{(-1)^k\pi^2}
+$$
+
+Also $\cos(\pi x)\delta'(x-k)=\cos(\pi k)\delta'(x-k)=(-1)^k\delta'(x-k)$: by the product rule the extra term is $-\cos'(\pi k)\delta(x-k)=0$, since $\cos'(\pi k)=-\pi\sin(\pi k)=0$. Therefore
+
+$$
+\pi^2\cos(\pi x)\delta'(\sin\pi x)=\pi^2\sum_{k}\frac{(-1)^k\delta'(x-k)}{(-1)^k\pi^2}=\sum_{k}\delta'(x-k)
+$$
+
+Consider the IVP:
+
+$$
+\begin{cases}
+\frac{d^2y}{dx^2}=\pi^2\cos(\pi x)\delta'(\sin\pi x)\\
+y(x_0)=y_0\\
+y'(x_0)=0
+\end{cases}
+$$
+
+For simple, we assume $x_0\notin\mathbb{Z}$, we have:
+
+$$
+\frac{dy}{dx}=y'(x_0)+\int_{x_0}^{x}\pi^2\cos(\pi t)\delta'(\sin\pi t)\,dt
+=0+\sum_{k}\delta(x-k)=\pi\delta(\sin(\pi x))
+$$
+
+Here $\int\delta'(t-k)\,dt=\delta(t-k)$, and $\delta(x_0-k)=0$ because $x_0\notin\mathbb{Z}$.
+
+That means the IVP reduces to the `y'` mode IVP, which has been proved above.
+
+Notice that the IVP above takes $y'(x_0)=0$. Generally, let $\theta$ be the launch angle set by player, then:
+
+$$
+y'(x)=\tan\theta+\sum_{k}\delta(x-k)
+$$
+
+so the whole staircase comes out tilted by $\tan\theta$.
+
+Differentiating any of the kernels above gives a usable $\delta'$; all of them satisfy $\int\delta'=0$, $\int x\,\delta'(x)\,dx=-1$ and scale as $a^{-2}$.
+
+**Gaussian**
+
+$$
+\delta'_a(x)=-\frac{2u\,e^{-u^2}}{\sqrt{\pi}a^2},\qquad u=\frac{x}{a}
+$$
+
+$$
+y''-\frac{2\pi^2\cos(\pi x)\sin(\pi x)}{\sqrt{\pi}\,a^3}e^{-\left(\frac{\sin\pi x}{a}\right)^2}
+$$
+
+```text
+-2sin(pix)*cos(pix)*pi^2/(sqrt(pi)*a^3)*e^(-(sin(pix)/a)^2)
+```
+
+**Lorentzian**
+
+$$
+\delta'_a(x)=-\frac{2u}{\pi a^2(1+u^2)^2},\qquad u=\frac{x}{a}
+$$
+
+$$
+y''=-\frac{2\pi\cos(\pi x)\sin(\pi x)}{a^3\left(1+\left(\frac{\sin\pi x}{a}\right)^2\right)^2}
+$$
+
+```text
+-2pi*sin(pix)*cos(pix)/(a^3*(1+(sin(pix)/a)^2)^2)
+```
+
+**$\text{sech}^2$**
+
+$$
+\delta'_a(x)=-\frac{\text{sech}^2u\,\tanh u}{a^2},\qquad u=\frac{x}{a}
+$$
+
+$$
+y''=-\frac{\pi^2\cos(\pi x)}{a^2}\,\text{sech}^2\left(\frac{\sin\pi x}{a}\right)\tanh\left(\frac{\sin\pi x}{a}\right)
+$$
+
+```text
+-pi^2*cos(pix)*(4/(e^(sin(pix)/a)+e^(-sin(pix)/a))^2)*(1-2/(1+e^(2sin(pix)/a)))/a^2
+```
+
