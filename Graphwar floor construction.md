@@ -411,7 +411,7 @@ Consider the IVP (the bullet only ever moves to the right, so we only need $x\ge
 
 $$
 \begin{cases}
-\dfrac{dy}{dx}=\pi\delta(\sin(\pi x))=\sum_{k}\delta(x-k)\\[6pt]
+\dfrac{dy}{dx}=\pi\delta(\sin(\pi x))=\sum_{k}\delta(x-k)\\
 y(x_0)=y_0
 \end{cases}
 $$
@@ -419,7 +419,7 @@ $$
 Integrating from $x_0$, and using $\int^{x}\delta(t-k)\,dt=H(x-k)$ with $H$ the Heaviside step ($x_0\notin\mathbb{Z}$):
 
 $$
-y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+\#\{k\in\mathbb{Z}: x_0<k\le x\}
+y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+|\{k\in\mathbb{Z}: x_0<k\le x\}|
 $$
 
 The number of integers in $(x_0,x]$ is exactly $\lfloor x\rfloor-\lfloor x_0\rfloor$, hence
@@ -478,7 +478,7 @@ $$
 **Rectangular (box)**
 
 $$
-\delta_a(x)=\frac{1}{2a}\mathbf{1}_{\{|x|<a\}}
+\delta_a(x)=\frac{1}{2a}\mathbf{1}_{\{|x|\lt a\}}
 $$
 
 $$
