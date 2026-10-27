@@ -88,7 +88,7 @@ and $M$ is a large number
 
 Both of them have huge problems although they can also solve the 2nd subquestion naturally.
 
-The Fourier approximation converges so slowly that the precision is still very low after accumulating dozens of terms: the  maximum error at points far from integers is about $0.02$ if $N=60$. Moreover, regardless of $N$ as big as, the Gibbs phenomenon exists near integer points, that is, the function will overshoot and oscillate, whose error can' t be eliminated.
+The Fourier approximation converges so slowly that the precision is still very low after accumulating dozens of terms: the  maximum error at distance $>0.05$ from the integers is about $0.02$ if $N=60$. Moreover, regardless of $N$ as big as, the Gibbs phenomenon exists near integer points, that is, the function will overshoot and oscillate, whose error can' t be eliminated.
 
 Indeed the sum of Sigmoid functions construction can yield a high precision result, but its expression is too long (and so does Fourier form) to be used in actual situation.
 
@@ -106,7 +106,7 @@ $$
 \lfloor x\rfloor\approx x-\frac{1}{2}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{1}{2}\right)}{2}\right)}}}{3+e^{-500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}+\frac{2-\frac{4}{1+e^{-1.9\tan\left(\frac{\pi\left(x-\frac{3}{2}\right)}{2}\right)}}}{3+e^{500\cos\left(\pi\left(x-\frac{1}{2}\right)\right)}}
 $$
 
-They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at the points far from integers is about $0.02$ and $0.0005$ and also solves the 2nd subquestion naturally.
+They are shorter then trivial solutions while maintaining high precision, where the corresponding maximum error at distance $>0.05$ and $>0.2$ from the integers is about $0.02$ and $0.0005$ and also solves the 2nd subquestion naturally.
 
 ## Arctangent
 
@@ -134,7 +134,7 @@ Approximating $\arcsin$ with $\frac{\pi}{2}x$, we get $\arctan(x)\approx\frac{\p
 
 Adding an undetermined constant term $c$ to the denominator of $\frac{x}{\sqrt{1+x^2}}$ gives $\frac{x}{\sqrt{1+x^2}+c}$
 
-Let $f(x)=\frac{x}{\sqrt{1+x^2}+c}$, considering that $\arctan'(0)=0$, let $f'(0)=0$, we get $c=\frac{\pi}{2}-1$
+Let $f(x)=\frac{x}{\sqrt{1+x^2}+c}$, considering that $\arctan'(0)=1$, let $\frac{\pi}{2}f'(0)=1$, we get $c=\frac{\pi}{2}-1$
 
 So
 
@@ -230,7 +230,7 @@ $$
 \lfloor x \rfloor \approx x-\frac{1}{2}+\frac{\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon}}{4+\sqrt{34+(2\pi\frac{\sin(2\pi x)}{1-\cos(2\pi x)+\varepsilon})^{2}}}
 $$
 
-In Graphwar II, because of the algorithm improvements, $\varepsilon$ can be arbitrarily close to $0$. But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\text{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
+In Graphwar II, because of the algorithm improvements, $\varepsilon$ can be as small as about $10^{-11}$; at $10^{-12}$ it breaks down (that is a floating-point limit, not an algorithmic one). But in Graphwar I can't do that because of the algorithm defects. The smallest value of $\varepsilon$ is about $0.0007$ if you just input a $\text{floor}$ function. But if you want to compose it with any other function, the value should be analyzed specifically.
 
 Finally it's the expression of $\text{floor}$ that can be used in Graphwar：`x-0.5+(pisin(2pix)/(1-cos(2pix)+0.0007))/(4+sqrt(34+(2*pisin(2pix)/(1-cos(2pix)+0.0007))^2))`
 
@@ -258,7 +258,7 @@ $$
 \frac{\pi^2\frac{\sin(x)}{\sqrt{1-\sin^2(x)}}}{4+\sqrt{34+(2\pi \frac{\sin(x)}{\sqrt{1-\sin^2(x)}})^2}}\approx\arcsin(\sin(x))=
 \begin{cases}
 x-2k\pi,&x\in[-\frac{\pi}{2}+2k\pi,\frac{\pi}{2}+2k\pi]\\
--x+2k\pi,&x\in[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi]
+-x+\pi+2k\pi,&x\in[\frac{\pi}{2}+2k\pi,\frac{3\pi}{2}+2k\pi]
 \end{cases}\\
 k\in\mathbb{Z}
 $$
@@ -308,7 +308,7 @@ $$
 A continuous approximation of $\text{sgn}(x)$ which can also eliminate breakpoints is:
 
 $$
-\text{sgn}(x)\approx\tanh(Mx)=1-\frac{2}{1+e^{2Mx}}
+\text{sgn}(x)\approx\tanh\left(\frac{M}{2}x\right)=1-\frac{2}{1+e^{Mx}}
 $$
 
 where $M$ is a large number
@@ -316,7 +316,7 @@ where $M$ is a large number
 Combine them, we get:
 
 $$
-\lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\phi(\pi x)\tanh(M\sin(x))=x-0.5+\frac{\frac{\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)}{4+\sqrt{34+\left(\frac{2\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\right)^{2}}}
+\lfloor x\rfloor\approx x-\frac{1}{2}+\frac{1}{\pi}\phi(\pi x)\tanh\left(\frac{M}{2}\sin(\pi x)\right)=x-0.5+\frac{\frac{\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\left(1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}\right)}{4+\sqrt{34+\left(\frac{2\pi\cos\left(\pi x\right)}{\sqrt{1-\cos^{2}\left(\pi x\right)}}\right)^{2}}}
 $$
 
 Now, without controlling $\varepsilon$ and loss of precision, we get a stable approximation that can be combine with almost any function and works normally in Graphwar I
@@ -362,7 +362,7 @@ $$
 That is:
 
 $$
-\frac{\cos\left(\pi x\right)}{\sqrt{1-\cos^2\left(\pi x\right)}}=\frac{\text{sgn}(sin(\pi x))}{\tan(\pi x)}\approx\frac{1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}}{\tan(\pi x)}
+\frac{\cos\left(\pi x\right)}{\sqrt{1-\cos^2\left(\pi x\right)}}=\frac{\text{sgn}(\sin(\pi x))}{\tan(\pi x)}\approx\frac{1-\frac{2}{1+e^{M\sin\left(\pi x\right)}}}{\tan(\pi x)}
 $$
 
 Finally we get:
@@ -375,4 +375,4 @@ which is much shorter than the [3rd try](#3rd-try) form and there are only $4$ $
 
 ---
 
-Similarly, here is the expression that can be used in Graphwar: `x-0.5+(pi(1-2/(1+e^(500sin(pix))))^2)/(tan(pix)(4+sqrt(34+(2pi/tan(pix))^2)))`
+Similarly, here is the expression that can be used in Graphwar: `x-0.5+(pi(1-2/(1+e^(Msin(pix))))^2)/(tan(pix)(4+sqrt(34+(2pi/tan(pix))^2)))`
