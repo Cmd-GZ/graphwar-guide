@@ -27,6 +27,8 @@ In fact, it contains 2 subquestions:
     - [ODE Mode](#ode-mode)
       - [`y'` mode](#y-mode)
       - [`y''` mode](#y-mode-1)
+    - [Fix points](#fix-points)
+    - [Rademacher function series](#rademacher-function-series)
 
 ## Prerequisites
 
@@ -587,4 +589,73 @@ $$
 ```text
 -pi^2*cos(pix)*(4/(e^(sin(pix)/a)+e^(-sin(pix)/a))^2)*(1-2/(1+e^(2sin(pix)/a)))/a^2
 ```
+### Fix points
 
+Let $f(u)=u-\sin u$ and $M\in\mathbb{N}$ be a big number, consider:
+
+$$
+g_M(x)=\frac{1}{2\pi}f^M\left(2\pi\left(x-\frac{1}{2}\right)\right)
+$$
+
+We have:
+
+$$
+\lim\limits_{M\to\infty}g_M(x)=
+\begin{cases}
+\lfloor x\rfloor, & x\notin \mathbb{Z}\\
+\lfloor x\rfloor-\frac{1}{2}, & x\in \mathbb{Z}
+\end{cases}
+$$
+
+The half-integer value at integers is because the initial point $2\pi\left(x-\frac12\right)=(2x-1)\pi$ is exactly one of the repelling fixed points $(2m-1)\pi$ of $f$, where the iteration does not move.
+
+But the length of the expression and the slow convergence near the integers make it a poor choice for Graphwar:
+
+- $M=1$: `((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))/(2*pi))`
+- $M=2$: `(((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))-sin((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))))/(2*pi))`
+- $M=3$: `((((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))-sin((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))))-sin(((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))-sin((2*pi*(x-0.5)-sin(2*pi*(x-0.5)))))))/(2*pi))`
+- ...
+
+Away from the integers the iteration converges cubically, $d_{k+1}\approx d_k^3/6$; near an integer it first has to escape from the repelling fixed point, which takes $O\left(\log_2\frac{1}{\delta}\right)$ steps, so a tolerance $\delta$ around the integers needs roughly $M\approx\log_2(1/\delta)+2$.
+
+### Rademacher function series
+
+This construction is essentially a variant of the second [Trivial solution](#trivial-solutions).
+
+Let $r_k(x)=\text{sgn}\sin\frac{\pi x}{2^{k}}$ be the $k$-th Rademacher function, and
+
+$$
+t_k(x)=\frac{2^{k}}{1+e^{M\cdot2^{k}\cdot\sin\left(\frac{\pi x}{2^{k}}\right)}}
+$$
+
+be an approximation of $2^k\frac{1-r_k(x)}{2}$, where $M$ is a big number. Then, for $u\notin\mathbb{Z}$,
+
+$$
+\lfloor u\rfloor=\frac{2^{n+1}-1}{2}-\frac{1}{2}\sum_{k=0}^{n}2^{k}r_k(u),\qquad u\in[0,2^{n+1})
+$$
+
+so
+
+$$
+\lfloor x\rfloor\approx\sum_{k=0}^{n}t_k(x),\qquad x\in[0,2^{n+1})
+$$
+
+For Graphwar, since the range of $x$ is $[-25,25)$, we can use $n=5$ and get
+
+$$
+\lfloor x\rfloor\approx-32+\sum_{k=0}^{n}t_k(x+32),\qquad x\in[-32,32)
+$$
+
+Notice that the coefficient in the exponent of $t_k(x)$ is $M2^{k}$. That is because at the flip points $m\in2^{k}\mathbb{Z}$ of $t_k$, we have:
+
+$$
+t_k'(m)=\frac{2^{k}\pi M}{4}
+$$
+
+Assume the sharp increase of $t_0(x)$ around $m$ has length $L$. Since $t_k$ is centrally symmetric about $m$ on $\left(m-2^{k-1},\ m+2^{k-1}\right)$, its height is $2^{k}$ times larger and its speed is $2^{k}$ times larger as well, so the length becomes
+
+$$
+L\frac{\text{height}}{\text{speed}}=L\frac{2^{k}}{2^{k}}=L
+$$
+
+Which means that the $2^{k}$ in the exponent of $t_k(x)$ keeps the length of the segment unchanged, so that the unexpected spikes are avoided.
