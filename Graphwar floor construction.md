@@ -406,7 +406,7 @@ So:
 $$
 \delta(\sin(\pi x))=\sum_{k}\frac{\delta(x-k)}{|\psi'(k)|}=\frac{1}{\pi}\sum_{k}\delta(x-k)
 \qquad\Longrightarrow\qquad
-\pi\,\delta(\sin(\pi x))=\sum_{k}\delta(x-k)
+\pi\ \delta(\sin(\pi x))=\sum_{k}\delta(x-k)
 $$
 
 Consider the IVP (the bullet only ever moves to the right, so we only need $x\ge x_0$):
@@ -418,10 +418,10 @@ y(x_0)=y_0
 \end{cases}
 $$
 
-Integrating from $x_0$, and using $\int^{x}\delta(t-k)\,dt=H(x-k)$ with $H$ the Heaviside step ($x_0\notin\mathbb{Z}$):
+Integrating from $x_0$, and using $\int^{x}\delta(t-k)\ dt=H(x-k)$ with $H$ the Heaviside step ($x_0\notin\mathbb{Z}$):
 
 $$
-y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\,dt=y_0+|\{k\in\mathbb{Z}: x_0\lt k\le x\}|
+y(x)=y_0+\int_{x_0}^{x}\sum_{k}\delta(t-k)\ dt=y_0+|\lbrace k\in\mathbb{Z}: x_0\lt k\le x\rbrace|
 $$
 
 The number of integers in $(x_0,x]$ is exactly $\lfloor x\rfloor-\lfloor x_0\rfloor$, hence
@@ -480,7 +480,7 @@ $$
 **Rectangular (box)**
 
 $$
-\delta_a(x)=\frac{1}{2a}\mathbf{1}_{\{|x|\lt a\}}
+\delta_a(x)=\frac{1}{2a}\mathbf{1}_{\lbrace|x|\lt a\rbrace}
 $$
 
 $$
@@ -530,11 +530,11 @@ $$
 For simple, we assume $x_0\notin\mathbb{Z}$, we have:
 
 $$
-\frac{dy}{dx}=y'(x_0)+\int_{x_0}^{x}\pi^2\cos(\pi t)\delta'(\sin\pi t)\,dt
+\frac{dy}{dx}=y'(x_0)+\int_{x_0}^{x}\pi^2\cos(\pi t)\delta'(\sin\pi t)\ dt
 =0+\sum_{k}\delta(x-k)=\pi\delta(\sin(\pi x))
 $$
 
-Here $\int\delta'(t-k)\,dt=\delta(t-k)$, and $\delta(x_0-k)=0$ because $x_0\notin\mathbb{Z}$.
+Here $\int\delta'(t-k)\ dt=\delta(t-k)$, and $\delta(x_0-k)=0$ because $x_0\notin\mathbb{Z}$.
 
 That means the IVP reduces to the `y'` mode IVP, which has been proved above.
 
@@ -546,16 +546,16 @@ $$
 
 so the whole staircase comes out tilted by $\tan\theta$.
 
-Differentiating any of the kernels above gives a usable $\delta'$; all of them satisfy $\int\delta'=0$, $\int x\,\delta'(x)\,dx=-1$ and scale as $a^{-2}$.
+Differentiating any of the kernels above gives a usable $\delta'$; all of them satisfy $\int\delta'=0$, $\int x\ \delta'(x)\ dx=-1$ and scale as $a^{-2}$.
 
 **Gaussian**
 
 $$
-\delta'_a(x)=-\frac{2u\,e^{-u^2}}{\sqrt{\pi}a^2},\qquad u=\frac{x}{a}
+\delta'_a(x)=-\frac{2u\ e^{-u^2}}{\sqrt{\pi}a^2},\qquad u=\frac{x}{a}
 $$
 
 $$
-y''-\frac{2\pi^2\cos(\pi x)\sin(\pi x)}{\sqrt{\pi}\,a^3}e^{-\left(\frac{\sin\pi x}{a}\right)^2}
+y''-\frac{2\pi^2\cos(\pi x)\sin(\pi x)}{\sqrt{\pi}\ a^3}e^{-\left(\frac{\sin\pi x}{a}\right)^2}
 $$
 
 ```text
@@ -579,11 +579,11 @@ $$
 **$\text{sech}^2$**
 
 $$
-\delta'_a(x)=-\frac{\text{sech}^2u\,\tanh u}{a^2},\qquad u=\frac{x}{a}
+\delta'_a(x)=-\frac{\text{sech}^2u\ \tanh u}{a^2},\qquad u=\frac{x}{a}
 $$
 
 $$
-y''=-\frac{\pi^2\cos(\pi x)}{a^2}\,\text{sech}^2\left(\frac{\sin\pi x}{a}\right)\tanh\left(\frac{\sin\pi x}{a}\right)
+y''=-\frac{\pi^2\cos(\pi x)}{a^2}\ \text{sech}^2\left(\frac{\sin\pi x}{a}\right)\tanh\left(\frac{\sin\pi x}{a}\right)
 $$
 
 ```text

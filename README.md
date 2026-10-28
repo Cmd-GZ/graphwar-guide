@@ -65,7 +65,7 @@ That is, instead of treating the position of the launcher as the origin of your 
 
 ![image-20260625195704528](./assets/image-20260625195704528.png)
 
-Clearly, $f_{\text{real}}$ is defined only for $x\ge x_0$. So the curve doesn't exist for $x<x_0$.
+Clearly, $f_{\text{real}}$ is defined only for $x\ge x_0$. So the curve doesn't exist for $x\lt x_0$.
 
 Since you can only input a function expression in the input box, which means for any input $x$ there is at most one corresponding $f(x)$. It's impossible for an input to correspond to multiple values. So it's clear that the bullet cannot move to the left, that is, the $-x$ direction.
 
@@ -202,7 +202,7 @@ $$
 
 That is: `(0.5*(k)(abs(x-(a))-abs(x-(b))))`
 
-where $a<b$
+where $a\lt b$
 
 The function is equivalent to the following function:
 
@@ -265,7 +265,7 @@ $$
 
 That is `(1/((1+exp(-m*(x-(a))))*(1+exp(m*(x-(b))))))`
 
-where $m\in\mathbb{R}_+$ is a big positive number and $a<b$
+where $m\in\mathbb{R}_+$ is a big positive number and $a\lt b$
 
 ![1782385252813761707](./assets/1782385252813761707.png)
 
@@ -296,7 +296,7 @@ f_n(x), & x\in[a_n,b_n]\\
 \end{cases}
 $$
 
-where $a_i<b_i$ for $i=1,2,\cdots,n$
+where $a_i\lt b_i$ for $i=1,2,\cdots,n$
 
 And the piecewise function can be approximated by:
 
@@ -379,7 +379,7 @@ For the second order ODE i.e. `y''` mode, the moving curve is also the solution 
 
 ![image-20260629185741113](./assets/image-20260629185741113.png)
 
-Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy}{dx})$ (i.e. $E(x,y,y')$), then the corresponding moving curve of your bullet is the solution of the following IVP:
+Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy}{dx})$, i.e. $E(x,y,y')$, then the corresponding moving curve of your bullet is the solution of the following IVP:
 
 $$
 \begin{cases}
