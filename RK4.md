@@ -109,7 +109,7 @@ The specific implementation of the algorithm in the Graphwar (I) is as follows (
 ```java
 private double getRK4(double x, double y, double step)
 {
-    double k1 = polishFunc.evaluateFunction( x, y, 0); // 0 is dy, which is not used in this case
+    double k1 = polishFunc.evaluateFunction( x, y, 0); // 0 is y', which is not used in this case
     double k2 = polishFunc.evaluateFunction( x + 0.5*step, y + 0.5*step*k1, 0);
     double k3 = polishFunc.evaluateFunction( x + 0.5*step, y + 0.5*step*k2, 0);
     double k4 = polishFunc.evaluateFunction( x + step, y + step*k3, 0);
