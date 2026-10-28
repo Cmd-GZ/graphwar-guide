@@ -1,10 +1,16 @@
 # Graphwar Guide
 
-Chinese version is here: [中文版本在这里](./README-zh-cn.md)
+Chinese version is here: [![中文](https://img.shields.io/badge/中文版-README-c9162c)](./README-zh-cn.md)
 
 This is a simple guide for Graphwar, which contains some stuff that should be noted and some useful skills. And I'm also a beginner of this game who started to play it only a few days ago (and my English is not very good). So there may be some errors in this guide. If you find any errors or have any suggestions, please let me know, I'll appreciate it.
 
 Anyway, Graphwar is an artillery game in which you must hit your enemies using mathematical functions. The trajectory of your shot is determined by the function you wrote, and your goal is to avoid the obstacles and your teammates and hit your enemies. The game takes place in a Cartesian Plane.
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-graphwar-181717?logo=github&logoColor=white)](https://github.com/catabriga/graphwar) [![Website](https://img.shields.io/badge/Official_Website-graphwar.com-blue)](https://www.graphwar.com/) [![Discord](https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white)](https://discord.gg/Fmwq7XmCH2) [![QQ](https://img.shields.io/badge/QQ_group_(Unofficial)-1033176518-12B7F5?logo=tencentqq&logoColor=white)](https://qm.qq.com/q/IkvE3ONSYC)
+
+</div>
 
 ## Contents
 
@@ -34,6 +40,8 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
       - [If the developer unprecedentedly pushes a $y^{(n)}$ mode](#if-the-developer-unprecedentedly-pushes-a-yn-mode)
 
 ## Something you should know
+
+Read [How to obtain](./download.md) to know how to obtain Graphwar.
 
 There are 2 teams in a game, and any player should and can only be in one team.
 
