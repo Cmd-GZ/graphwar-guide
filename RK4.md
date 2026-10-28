@@ -104,7 +104,55 @@ $$
 \mathbf Y=\begin{pmatrix}x\\ y\\ y'\end{pmatrix},\mathbf F=\begin{pmatrix}1\\ y'\\ E\end{pmatrix}.
 $$
 
-The specific implementation of the algorithm of the game (Graphwar I) as follows:
+The specific implementation of the algorithm in the Graphwar (I) is as follows (it's taken from my [reorganized version](https://github.com/Cmd-GZ/graphwar/blob/optimize/Function/src/Graphwar/Function.java) because of the original spaghetti code):
 
-![image-20260713191738921](./assets/image-20260713191738921.png)
-![image-20260713191815689](./assets/image-20260713191815689.png)
+```java
+private double getRK4(double x, double y, double step)
+{
+    double k1 = polishFunc.evaluateFunction( x, y, 0); // 0 is dy, which is not used in this case
+    double k2 = polishFunc.evaluateFunction( x + 0.5*step, y + 0.5*step*k1, 0);
+    double k3 = polishFunc.evaluateFunction( x + 0.5*step, y + 0.5*step*k2, 0);
+    double k4 = polishFunc.evaluateFunction( x + step, y + step*k3, 0);
+
+    return y + (step/6)*(k1 + 2*k2 + 2*k3 + k4);
+}
+```
+
+```java
+private double[] getRK42(double x, double y, double dy, double step)
+{
+    double x1 = x;
+    double y1 = y;
+    double y2 = dy;
+
+    double k11 = y2;
+    double k12 = polishFunc.evaluateFunction( x1, y1, y2);
+
+    x1 = x + step/2;
+    y1 = y + (step/2)*k11;
+    y2 = dy + (step/2)*k12;
+
+    double k21 = y2;
+    double k22 = polishFunc.evaluateFunction( x1, y1, y2);
+
+    y1 = y + (step/2)*k21;
+    y2 = dy + (step/2)*k22;
+
+    double k31 = y2;
+    double k32 = polishFunc.evaluateFunction( x1, y1, y2);
+
+    x1 = x + step;
+    y1 = y + (step)*k31;
+    y2 = dy + (step)*k32;
+
+    double k41 = y2;
+    double k42 = polishFunc.evaluateFunction( x1, y1, y2);
+
+
+    y1 = y + (step/6)*(k11 + 2*k21 + 2*k31 + k41);
+    y2 = dy + (step/6)*(k12 + 2*k22 + 2*k32 + k42);
+
+
+    return new double[]{y1, y2};
+}
+```
