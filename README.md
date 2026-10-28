@@ -38,21 +38,21 @@ Anyway, Graphwar is an artillery game in which you must hit your enemies using m
 
 There are 2 teams in a game, and any player should and can only be in one team.
 
-![image-20260625190748015](./README.assets/image-20260625190748015.png)
+![image-20260625190748015](./assets/image-20260625190748015.png)
 
 After everyone has clicked the $\checkmark$ button and turned green, the game will start after 5 seconds. So click the button, don't make other guys wait for you.
 
-![image-20260625191533507](./README.assets/image-20260625191533507.png)
+![image-20260625191533507](./assets/image-20260625191533507.png)
 
 A kinda annoying point is that there are many reasons, such as someone joining or leaving the room, that will make you turn back to white. Now you have to click the button again.
 
 Your teammates and you are always on the left side ($x<0$). Your enemies are always on the right side ($x>0$). Or you can check someone's orientation to judge which side they are on: facing right is your teammates, facing left is your enemies. And you can kill your teammates in this game. So PLZ! don't kill your teammates! You know what? I've been killed because of this many times.
 
-![image-20260625191842364](./README.assets/image-20260625191842364.png)
+![image-20260625191842364](./assets/image-20260625191842364.png)
 
 The character you control will become red when it's your turn. Now you can input any function expression in the input box. Click "Fire" button or press "Enter" to fire. The bullet will move according to the corresponding curve of your function from left to right. And you can only fire once per turn.
 
-![image-20260625195737269](./README.assets/image-20260625195737269.png)
+![image-20260625195737269](./assets/image-20260625195737269.png)
 
 In the normal mode (`y` mode) (I'll talk about [ODE mode](#ode-mode) (`y'` and `y''` mode) later), assume the function you input is $f$, and your coordinates are $(x_0,y_0)$, then the real moving curve of your bullet is:
 
@@ -60,11 +60,11 @@ $$
 f_{\text{real}}(x)=f(x)+(y_0-f(x_0))
 $$
 
-![https://www.graphwar.com/ss2Graphwar.png](./README.assets/ss2Graphwar.png)
+![https://www.graphwar.com/ss2Graphwar.png](./assets/ss2Graphwar.png)
 
 That is, instead of treating the position of the launcher as the origin of your function curve, the game will ensure that the function curve always passes through the launcher's position by shifting the curve up or down. That's why you will get a very steep curve if you use $x^2$ or $x^3$. Try using $(x-x_0)^2$ or $(x-x_0)^3$, or just multiply it by a small coefficient, to make it kinda normal.
 
-![image-20260625195704528](./README.assets/image-20260625195704528.png)
+![image-20260625195704528](./assets/image-20260625195704528.png)
 
 Clearly, $f_{\text{real}}$ is defined only for $x\ge x_0$. So the curve doesn't exist for $x<x_0$.
 
@@ -72,37 +72,37 @@ Since you can only input a function expression in the input box, which means for
 
 The black fucking circles are obstacles. If your bullet hits them, it will explode and make a small hole, and the bullet will disappear.
 
-![image-20260625201339945](./README.assets/image-20260625201339945.png)
+![image-20260625201339945](./assets/image-20260625201339945.png)
 
 If your bullet hits your teammates or your enemies, they will be killed but your bullet will continue to move.
 
-![image-20260625201258139](./README.assets/image-20260625201258139.png)
+![image-20260625201258139](./assets/image-20260625201258139.png)
 
 Roughly and ideally, the battlefield is in a $[-25,25]\times[-15,15]$ rectangular area. If the bullet hits the boundary, it will disappear.
 
-![image-20260625202013194](./README.assets/image-20260625202013194.png)
+![image-20260625202013194](./assets/image-20260625202013194.png)
 
-![image-20260625202054414](./README.assets/image-20260625202054414.png)
+![image-20260625202054414](./assets/image-20260625202054414.png)
 
 Precisely, at least in Graphwar I, because of some features, the battlefield is in $[-25,25)\times[-\frac{1125}{77},\frac{1125}{77})$, where $25=\frac{50\cdot 770}{770\cdot2},\frac{1125}{77}=\frac{50\cdot 450}{770\cdot 2}\approx 14.6103896$
 
-![image-20260705220825755](./README.assets/image-20260705220825755.png)
+![image-20260705220825755](./assets/image-20260705220825755.png)
 
-![image-20260705221447117](./README.assets/image-20260705221447117.png)
+![image-20260705221447117](./assets/image-20260705221447117.png)
 
 If the function is undefined at the point that bullet passes through, like $y=\sqrt{x}$ and the bullet passes through some $x<0$, the bullet will disappear.
 
-![image-20260625200104823](./README.assets/image-20260625200104823.png)
+![image-20260625200104823](./assets/image-20260625200104823.png)
 
 If the function value is too large, or — more generally — if any intermediate value evaluates to `NaN`, the bullet will disappear.
 
-![image-20260625201945265](./README.assets/image-20260625201945265.png)
+![image-20260625201945265](./assets/image-20260625201945265.png)
 
-![image-20260629223755887](./README.assets/image-20260629223755887.png)
+![image-20260629223755887](./assets/image-20260629223755887.png)
 
 The distance your bullet can move, that is, the length of your function curve, is bounded. If the distance is too long, the bullet will disappear. That's why something like $\sin(100x)$ usually doesn't work.
 
-![image-20260625200328666](./README.assets/image-20260625200328666.png)
+![image-20260625200328666](./assets/image-20260625200328666.png)
 
 The map of a game is random. If you get a dumbass map, type `-skip` in the chat box and ask other guys to type it. The game will generate a new random map if everyone types `-skip`.
 
@@ -171,9 +171,9 @@ That is, the function is 0 when $x\lt a$, and $k$ when $x\ge a$.
 
 In particular, let $k$ be a negative number to make the bullet move down.
 
-![image-20260625204651483](./README.assets/image-20260625204651483.png)
+![image-20260625204651483](./assets/image-20260625204651483.png)
 
-![1782391863123334113](./README.assets/1782391863123334113.png)
+![1782391863123334113](./assets/1782391863123334113.png)
 
 It's a very useful and simple function used to move and dodge obstacles.
 
@@ -189,9 +189,9 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 
 The function creates a spike at $x=a$ with height $h$.
 
-![image-20260629231551089](./README.assets/image-20260629231551089.png)
+![image-20260629231551089](./assets/image-20260629231551089.png)
 
-![image-20260629231124761](./README.assets/image-20260629231124761.png)
+![image-20260629231124761](./assets/image-20260629231124761.png)
 
 Compared to using something like $\frac{h}{1+m(x-a)^2}+\frac{-h}{1+m(x-a-0.1)^2}$, this function is simpler and easier to use.
 
@@ -217,9 +217,9 @@ $$
 
 which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function with slope $k$ when $x\in[a,b]$, and $k/2|a-b|$ when $x\gt b$
 
-![image-20260625210514390](./README.assets/image-20260625210514390.png)
+![image-20260625210514390](./assets/image-20260625210514390.png)
 
-![image-20260625210611315](./README.assets/image-20260625210611315.png)
+![image-20260625210611315](./assets/image-20260625210611315.png)
 
 **There are so many cheaters who like to use the combination of this function. If you see someone send a whole string of this stuff with very precise coefficients, it's very likely to be a cheater.**
 
@@ -227,7 +227,7 @@ which means the function is $-k/2|a-b|$ when $x\lt a$, a linear function with sl
 
 Although $\sin$ and $\cos$ are very basic, they are very useful to sweep a wide area if you make the period short and the amplitude large.
 
-![image-20260625211651927](./README.assets/image-20260625211651927.png)
+![image-20260625211651927](./assets/image-20260625211651927.png)
 
 ### General step function:
 
@@ -250,9 +250,9 @@ $$
 
 That is, the function is 0 when $x\lt a$, and $f(x)$ when $x\ge a$.
 
-![image-20260625212035083](./README.assets/image-20260625212035083.png)
+![image-20260625212035083](./assets/image-20260625212035083.png)
 
-![image-20260625211834599](./README.assets/image-20260625211834599.png)
+![image-20260625211834599](./assets/image-20260625211834599.png)
 
 This function can be used to make any function $f(x)$ work only after passing through a certain point. But if you want to let it work only for an interval, the General step function can't help you. Now you need the following stuff.
 
@@ -268,7 +268,7 @@ That is `(1/((1+exp(-m*(x-(a))))*(1+exp(m*(x-(b))))))`
 
 where $m\in\mathbb{R}_+$ is a big positive number and $a<b$
 
-![1782385252813761707](./README.assets/1782385252813761707.png)
+![1782385252813761707](./assets/1782385252813761707.png)
 
 to approximate the indicator function:
 
@@ -307,9 +307,9 @@ $$
 
 That is, the sum of something like `((f)*(1/((1+exp(-m*(x-(a))))*(1+exp(m*(x-(b)))))))`
 
-![1782385263468249718](./README.assets/1782385263468249718.png)
+![1782385263468249718](./assets/1782385263468249718.png)
 
-![image-20260625213603005](./README.assets/image-20260625213603005.png)
+![image-20260625213603005](./assets/image-20260625213603005.png)
 
 If you played with me in the game, you will see that I usually use this function to construct any function I want. It's very useful for me, which is one of the best functions in my mind.
 
@@ -325,9 +325,9 @@ where $m\in\mathbb{R}_+$ is a big positive number.
 
 The function creates a spike every $T$ units.
 
-![img](./README.assets/5148762dab81b465440e197cfe6d52ff.png)
+![img](./assets/5148762dab81b465440e197cfe6d52ff.png)
 
-![image-20260630000214478](./README.assets/image-20260630000214478.png)
+![image-20260630000214478](./assets/image-20260630000214478.png)
 
 This function can also sweep a wide area by creating many spikes.
 
@@ -343,9 +343,9 @@ where $m\in\mathbb{R}_+$ is a big positive number, $T$ is the period, and $p\in(
 
 In a period $[kT,kT+T)$, the function will be $f$ if $x\in[kT,kT+p)$, otherwise it will be $0$.
 
-![image-20260630001433312](./README.assets/image-20260630001433312.png)
+![image-20260630001433312](./assets/image-20260630001433312.png)
 
-![image-20260630001359082](./README.assets/image-20260630001359082.png)
+![image-20260630001359082](./assets/image-20260630001359082.png)
 
 Based on this function, you can do many interesting things.
 
@@ -357,7 +357,7 @@ As you can see, there are 2 modes of ODE mode: `y'` mode and `y''` mode, corresp
 
 Like the normal mode, you can input any function expression in the input box to set the trajectory of your bullet. But it allows you to use variables other than $x$, like $y$ in `y'` mode and $y,y'$ in `y''` mode. (For the variable `y'`, there was a bug in the previous version that made it match `y` instead of `y'`. But it has been fixed in the latest version. So remember to update your game.)
 
-![image-20260629184937660](./README.assets/image-20260629184937660.png)
+![image-20260629184937660](./assets/image-20260629184937660.png)
 
 As [Syntax](#syntax) said, `y` means $y$, and `y'` means $\frac{dy}{dx}$.
 
@@ -378,7 +378,7 @@ $$
 
 For the second order ODE i.e. `y''` mode, the moving curve is also the solution of a certain IVP, but it's clear that you need $2$ initial conditions instead of $1$ in this case. The first initial condition is the same, the game takes the firing angle as the second initial condition, which can be modified by pressing the up/down arrow keys in your turn.
 
-![image-20260629185741113](./README.assets/image-20260629185741113.png)
+![image-20260629185741113](./assets/image-20260629185741113.png)
 
 Assume the firing angle is $\theta$, the expression you input is $E(x,y,\frac{dy}{dx})$ (i.e. $E(x,y,y')$), then the corresponding moving curve of your bullet is the solution of the following IVP:
 
@@ -500,8 +500,8 @@ $$
 
 The specific implementation of the algorithm of the game as follows:
 
-![image-20260713191738921](./README.assets/image-20260713191738921.png)
-![image-20260713191815689](./README.assets/image-20260713191815689.png)
+![image-20260713191738921](./assets/image-20260713191738921.png)
+![image-20260713191815689](./assets/image-20260713191815689.png)
 
 ### Skill
 
@@ -519,11 +519,11 @@ $$
 
 That is: `M*(-y+(f))`
 
-![image-20260629193239745](./README.assets/image-20260629193239745.png)
+![image-20260629193239745](./assets/image-20260629193239745.png)
 
-![image-20260629193547333](./README.assets/image-20260629193547333.png)
+![image-20260629193547333](./assets/image-20260629193547333.png)
 
-![image-20260629193728752](./README.assets/image-20260629193728752.png)
+![image-20260629193728752](./assets/image-20260629193728752.png)
 
 Here is the strict proof of the validity:
 
@@ -613,11 +613,11 @@ $$
 
 That is: `-M^2*y-2*M*y'+M^2(f)`
 
-![image-20260629194811115](./README.assets/image-20260629194811115.png)
+![image-20260629194811115](./assets/image-20260629194811115.png)
 
-![image-20260629195409230](./README.assets/image-20260629195409230.png)
+![image-20260629195409230](./assets/image-20260629195409230.png)
 
-![image-20260629195608406](./README.assets/image-20260629195608406.png)
+![image-20260629195608406](./assets/image-20260629195608406.png)
 
 Also, here is the strict proof of the validity:
 
