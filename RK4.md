@@ -104,7 +104,7 @@ $$
 \mathbf Y=\begin{pmatrix}x\\ y\\ y'\end{pmatrix},\mathbf F=\begin{pmatrix}1\\ y'\\ E\end{pmatrix}.
 $$
 
-The specific implementation of the algorithm of the game as follows:
+The specific implementation of the algorithm of the game (Graphwar I) as follows:
 
 ![image-20260713191738921](./assets/image-20260713191738921.png)
 ![image-20260713191815689](./assets/image-20260713191815689.png)
