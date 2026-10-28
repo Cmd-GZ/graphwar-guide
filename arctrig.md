@@ -25,7 +25,7 @@ Consider the odd function $f(x)=\frac{ax}{b+\sqrt{c+x^2}}$ with the following pr
 
 $$
 f'(0)=1\\
-\lim\limits_{x\to+\infty}f(x)=\frac{\pi}{2}\\
+\lim_{x\to+\infty}f(x)=\frac{\pi}{2}\\
 f(1)=\frac{\pi}{4}
 $$
 
@@ -63,11 +63,11 @@ The constants are easy to remember, asymptotes are precise, and the maximum erro
 
 ### Numerical Way
 
-Let $f(x)=\frac{ax}{b+\sqrt{c+dx^2}}$, and measure an approximation by the maximum error $\max\limits_{x\in\mathbb{R}}\lvert f(x)-\arctan x\rvert$. We can search for the best $a,b,c,d$ under different restrictions.
+Let $f(x)=\frac{ax}{b+\sqrt{c+dx^2}}$, and measure an approximation by the maximum error $\max_{x\in\mathbb{R}}\lvert f(x)-\arctan x\rvert$. We can search for the best $a,b,c,d$ under different restrictions.
 
 #### Precise Origin Derivative and Asymptotes
 
-Fixing $d=1$ and requiring both $f'(0)=1$ and $\lim\limits_{x\to+\infty}f(x)=\frac{\pi}{2}$ leaves $a=\frac{\pi}{2}$ and $b=\frac{\pi}{2}-\sqrt{c}$, so only one parameter is left. A one-dimensional search gives $c=0.8904022079$:
+Fixing $d=1$ and requiring both $f'(0)=1$ and $\lim_{x\to+\infty}f(x)=\frac{\pi}{2}$ leaves $a=\frac{\pi}{2}$ and $b=\frac{\pi}{2}-\sqrt{c}$, so only one parameter is left. A one-dimensional search gives $c=0.8904022079$:
 
 $$
 \arctan(x)\approx\frac{\pi}{2}\frac{x}{\frac{\pi}{2}-\sqrt{0.8904022079}+\sqrt{0.8904022079+x^2}}\approx\frac{\pi}{2}\frac{x}{\frac{\pi}{2}-\sqrt{0.890}+\sqrt{0.890+x^2}}
@@ -81,7 +81,7 @@ The maximum error is $8.622\times 10^{-4}$ ($8.946\times 10^{-4}$ with the coeff
 
 #### Precise Asymptotes
 
-Fixing $d=1$ and requiring $\lim\limits_{x\to+\infty}f(x)=\frac{\pi}{2}$ leaves $a=\frac{\pi}{2}$, and a two-dimensional search over $b,c$ gives $b=0.629944$, $c=0.878519$:
+Fixing $d=1$ and requiring $\lim_{x\to+\infty}f(x)=\frac{\pi}{2}$ leaves $a=\frac{\pi}{2}$, and a two-dimensional search over $b,c$ gives $b=0.629944$, $c=0.878519$:
 
 $$
 \arctan(x)\approx\frac{\pi}{2}\frac{x}{0.629944+\sqrt{0.878519+x^2}}\approx\frac{\pi}{2}\frac{x}{0.630+\sqrt{0.878+x^2}}
@@ -125,7 +125,7 @@ The maximum error is $4.311\times 10^{-4}$ ($4.517\times 10^{-4}$ with the coeff
 
 Consider the form $f(x)=\frac{ax}{b+|x|}$, which can help us to get some rough but shorter approximations.
 
-Let $f(1)=\frac{\pi}{4},\lim\limits_{x\to+\infty}f(x)=\frac{\pi}{2}$, we get $a=\frac{\pi}{2},b=1$:
+Let $f(1)=\frac{\pi}{4},\lim_{x\to+\infty}f(x)=\frac{\pi}{2}$, we get $a=\frac{\pi}{2},b=1$:
 
 $$
 \arctan(x)\approx \frac{\frac{\pi }{2}x}{1+|x|}
