@@ -7,12 +7,14 @@ Unfortunately, there are no inverse trigonometric functions in normal mode in Gr
 There are several identities for the inverse trigonometric functions:
 
 $$
+\begin{gather*}
 \arcsin x + \arccos x = \frac{\pi}{2}\\
 \arctan x + \text{arccot} x = \frac{\pi}{2}\\
 \text{arcsec} x = \arccos\left(\frac{1}{x}\right),|x|\ge1\\
 \text{arccsc} x = \arcsin\left(\frac{1}{x}\right),|x|\ge1\\
 \arcsin(x)=\arctan\left(\frac{x}{\sqrt{1-x^2}}\right),|x|\lt 1\\
 \arctan(x)=\arcsin\left(\frac{x}{\sqrt{1+x^2}}\right)
+\end{gather*}
 $$
 
 So clearly, if you have a certain inverse trigonometric function approximation, you can get the other inverse trigonometric function approximations by using these identities.
@@ -24,9 +26,11 @@ So clearly, if you have a certain inverse trigonometric function approximation, 
 Consider the odd function $f(x)=\frac{ax}{b+\sqrt{c+x^2}}$ with the following properties:
 
 $$
+\begin{gather*}
 f'(0)=1\\
 \lim_{x\to+\infty}f(x)=\frac{\pi}{2}\\
 f(1)=\frac{\pi}{4}
+\end{gather*}
 $$
 
 Which gives the solution:
@@ -154,13 +158,17 @@ with maximum error $5.9\times 10^{-2}$.
 With the above identities and approximations, we can get the other arcs just by combining them, like for example, we use Inigo Quilez's approximation:
 
 $$
+\begin{gather*}
 \arcsin(x)=\arctan\left(\frac{x}{\sqrt{1-x^2}}\right)\approx\frac{\pi^2\frac{x}{\sqrt{1-x^2}}}{4+\sqrt{34+(2\pi \frac{x}{\sqrt{1-x^2}})^2}}\\
 \arccos(x)=\frac{\pi}{2}-\arcsin(x)\approx\frac{\pi}{2}-\frac{\pi^2\frac{x}{\sqrt{1-x^2}}}{4+\sqrt{34+(2\pi \frac{x}{\sqrt{1-x^2}})^2}}\\
 \arctan(x)\approx\frac{\pi^2x}{4+\sqrt{34+(2\pi x)^2}}\\
 \text{arccot}(x)=\frac{\pi}{2}-\arctan(x)\approx\frac{\pi}{2}-\frac{\pi^2x}{4+\sqrt{34+(2\pi x)^2}}\\
 \text{arcsec}(x)=\arccos(\frac{1}{x})=\frac{\pi}{2}-\frac{\frac{\pi^2}{\sqrt{x^2-1}}}{4+\sqrt{34+(\frac{2\pi}{\sqrt{x^2-1}})^2}}\\
 \text{arccsc}(x)=\arcsin(\frac{1}{x})=\frac{\frac{\pi^2}{\sqrt{x^2-1}}}{4+\sqrt{34+(\frac{2\pi}{\sqrt{x^2-1}})^2}}
+\end{gather*}
 $$
+
+Normally they has the same error as the approximation you choose.
 
 Because of the various combinations, we invite you to construct your own approximations by yourself.
 
@@ -169,12 +177,14 @@ Because of the various combinations, we invite you to construct your own approxi
 Unlike in normal mode, it's easy to construct an inverse trigonometric function itself in ODE mode.
 
 $$
+\begin{gather*}
 \frac{d}{dx}\arcsin(x)=\frac{1}{\sqrt{1-x^2}}\\
 \frac{d}{dx}\arccos(x)=-\frac{1}{\sqrt{1-x^2}}\\
 \frac{d}{dx}\arctan(x)=\frac{1}{1+x^2}\\
 \frac{d}{dx}\text{arccot}(x)=-\frac{1}{1+x^2}\\
 \frac{d}{dx}\text{arcsec}(x)=\frac{1}{|x|\sqrt{x^2-1}}\\
 \frac{d}{dx}\text{arccsc}(x)=-\frac{1}{|x|\sqrt{x^2-1}}\\
+\end{gather*}
 $$
 
 ```
